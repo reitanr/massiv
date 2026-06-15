@@ -14,7 +14,7 @@ export const config = {
   // Garmin MapShare: navnet ditt fra Garmin Explore (Social → MapShare).
   // Adressen din er https://share.garmin.com/<dette-navnet>
   // Bytt ut "dittnavn" med ditt eget MapShare-navn.
-  mapShareName: "dittnavn",
+  mapShareName: "6HFRJ",
 
   // Omtrentlig start, vises som intro. Juster fritt.
   startDato: "Sommeren 2026",
