@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase, supabaseReady } from "../lib/supabase.js";
 
-// Viser innleggene dine (bilde + tekst) nyeste først.
-// Du legger inn nye innlegg fra Supabase (Table editor) når du har
-// dekning – eller vi bygger en enkel admin-side senere.
 export default function PostsFeed() {
   const [posts, setPosts] = useState([]);
   const [status, setStatus] = useState("laster");
@@ -13,22 +10,20 @@ export default function PostsFeed() {
       setStatus("mangler-nøkler");
       return;
     }
+    // Hent innlegg med tilhørende bilder fra post_media
     supabase
       .from("posts")
-      .select("*")
+      .select("*, post_media(id, url, type, sort_order)")
       .order("created_at", { ascending: false })
       .then(({ data, error }) => {
-        if (error) {
-          setStatus("feil");
-          return;
-        }
+        if (error) { setStatus("feil"); return; }
         setPosts(data || []);
         setStatus("klar");
       });
   }, []);
 
   return (
-    <section className="feed" id="dagbok">
+    <section id="dagbok">
       <h2 className="section-title">
         <span className="t-mark" aria-hidden="true" />
         Dagbok
@@ -46,23 +41,52 @@ export default function PostsFeed() {
       )}
 
       <div className="posts">
-        {posts.map((post) => (
-          <article className="post" key={post.id}>
-            {post.image_url && (
-              <img className="post-img" src={post.image_url} alt="" loading="lazy" />
-            )}
-            <div className="post-body">
-              <div className="post-meta">
-                {post.day_number != null && (
-                  <span className="day-badge">Dag {post.day_number}</span>
-                )}
-                <time>{formatDate(post.created_at)}</time>
+        {posts.map((post) => {
+          // Hent bilder sortert på sort_order, forkast ikke-bilde-media
+          const images = (post.post_media || [])
+            .filter((m) => m.type === "image")
+            .sort((a, b) => a.sort_order - b.sort_order);
+
+          // Fallback til gammelt image_url-felt hvis ingen post_media
+          const fallbackImg =
+            images.length === 0 && post.image_url
+              ? [{ id: "fallback", url: post.image_url }]
+              : [];
+          const allImages = images.length > 0 ? images : fallbackImg;
+
+          return (
+            <article className="post" key={post.id}>
+              {/* ── Bildevisning ─────────────────────────────── */}
+              {allImages.length === 1 && (
+                <img
+                  className="post-img"
+                  src={allImages[0].url}
+                  alt=""
+                  loading="lazy"
+                />
+              )}
+              {allImages.length > 1 && (
+                <div className={`post-img-grid cols-${Math.min(allImages.length, 3)}`}>
+                  {allImages.map((img) => (
+                    <img key={img.id} src={img.url} alt="" loading="lazy" />
+                  ))}
+                </div>
+              )}
+
+              {/* ── Tekst ────────────────────────────────────── */}
+              <div className="post-body">
+                <div className="post-meta">
+                  {post.day_number != null && (
+                    <span className="day-badge">Dag {post.day_number}</span>
+                  )}
+                  <time>{formatDate(post.created_at)}</time>
+                </div>
+                {post.title && <h3>{post.title}</h3>}
+                {post.body && <p>{post.body}</p>}
               </div>
-              {post.title && <h3>{post.title}</h3>}
-              {post.body && <p>{post.body}</p>}
-            </div>
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </div>
     </section>
   );
