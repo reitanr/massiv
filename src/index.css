@@ -212,11 +212,33 @@ body {
   overflow: hidden;
   background: var(--stone);
 }
-.map-frame iframe {
+.map-frame iframe,
+.leaflet-map {
   display: block;
   width: 100%;
   height: 520px;
   border: 0;
+}
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 10px;
+  font-size: 0.83rem;
+  color: var(--ink-soft);
+  align-items: center;
+}
+.legend-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.legend-note {
+  font-style: italic;
+  opacity: 0.8;
 }
 .map-placeholder {
   height: 300px;
