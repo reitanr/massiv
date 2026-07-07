@@ -1,55 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400&display=swap");
+
 :root {
-  --ink: #1b1e23;
-  --ink-soft: #4a525b;
-  --stone: #eceef0;
-  --stone-line: #d7dbdf;
-  --paper: #f7f8f9;
+  --ink: #0d1a12;
+  --ink-soft: #4a5a52;
+  --pine: #152e20;
+  --pine-mid: #1e4230;
+  --pine-light: #2d5a42;
   --dnt-red: #d8261c;
-  --pine: #213a33;
-  --sky: #335c77;
+  --dnt-red-dark: #b01e15;
+  --orange: #e07020;
+  --paper: #faf8f4;
+  --stone: #f0ede6;
+  --stone-line: #ddd9d0;
+  --sky: #3a6e8f;
 
-  --display: "Schibsted Grotesk", system-ui, sans-serif;
-  --body: "Inter", system-ui, sans-serif;
+  --text-on-dark: #e8f0eb;
+  --muted-on-dark: #7fa893;
+
+  --font: "Schibsted Grotesk", system-ui, sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  margin: 0;
-  background: var(--stone);
-  color: var(--ink);
-  font-family: var(--body);
+  font-family: var(--font);
   font-size: 17px;
-  line-height: 1.6;
+  line-height: 1.65;
+  background: var(--paper);
+  color: var(--ink);
   -webkit-font-smoothing: antialiased;
 }
 
-.page {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 0 20px 80px;
-}
-
-/* ── Red DNT trail-marker "T" ───────────────────────────── */
+/* ── DNT T-merke ─────────────────────────────────────────── */
 .t-mark {
   position: relative;
   display: inline-block;
-  width: 13px;
-  height: 15px;
   flex: none;
+  width: 14px;
+  height: 17px;
 }
 .t-mark::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   height: 4px;
   background: var(--dnt-red);
 }
@@ -63,91 +58,159 @@ body {
   height: 100%;
   background: var(--dnt-red);
 }
-.t-mark.big {
-  width: 22px;
-  height: 26px;
-}
-.t-mark.big::before {
-  height: 6px;
-}
-.t-mark.big::after {
-  width: 6px;
-}
+.t-mark.lg { width: 20px; height: 24px; }
+.t-mark.lg::before { height: 6px; }
+.t-mark.lg::after { width: 6px; }
+.t-mark.xl { width: 28px; height: 34px; }
+.t-mark.xl::before { height: 8px; }
+.t-mark.xl::after { width: 8px; }
+.t-mark.on-dark::before,
+.t-mark.on-dark::after { background: var(--dnt-red); }
 
-/* ── Hero ───────────────────────────────────────────────── */
-.hero {
-  padding: 64px 0 40px;
-  border-bottom: 1px solid var(--stone-line);
+/* ── Sticky nav ──────────────────────────────────────────── */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--pine);
+  border-bottom: 1px solid var(--pine-mid);
 }
-.brand {
+.site-nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.nav-logo {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 28px;
-}
-.brand-walker {
-  font-family: var(--display);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-size: 0.78rem;
-  color: var(--ink-soft);
-}
-.hero h1 {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(3.4rem, 14vw, 6rem);
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-  margin: 0;
-  color: var(--pine);
-}
-.tagline {
-  margin: 18px 0 28px;
-  font-size: 1.1rem;
-  color: var(--ink-soft);
-  max-width: 30ch;
-}
-.hero-nav {
-  display: flex;
-  gap: 22px;
-}
-.hero-nav a {
-  font-family: var(--display);
-  font-weight: 500;
-  font-size: 0.95rem;
-  color: var(--ink);
   text-decoration: none;
-  padding-bottom: 3px;
-  border-bottom: 2px solid transparent;
+  flex: none;
 }
-.hero-nav a:hover {
-  border-bottom-color: var(--dnt-red);
+.nav-logo-text {
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-on-dark);
+}
+.nav-links {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+  flex-wrap: wrap;
+}
+.nav-links a {
+  color: var(--muted-on-dark);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+.nav-links a:hover {
+  color: var(--text-on-dark);
+  background: rgba(255,255,255,0.07);
 }
 
-/* ── Section titles ─────────────────────────────────────── */
+/* ── Hero – mørk fjellmorgen ─────────────────────────────── */
+.hero {
+  background: linear-gradient(180deg, #0a1a0f 0%, var(--pine) 60%, #1e4230 100%);
+  color: var(--text-on-dark);
+  padding: 80px 24px 0;
+  overflow: hidden;
+  position: relative;
+}
+.hero-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.hero-byline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-on-dark);
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-weight: 900;
+  font-size: clamp(4rem, 18vw, 9rem);
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  color: #fff;
+  margin-bottom: 24px;
+}
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--muted-on-dark);
+  max-width: 38ch;
+  margin-bottom: 36px;
+  line-height: 1.5;
+}
+.hero-scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--muted-on-dark);
+  margin-bottom: 60px;
+}
+.hero-scroll span { font-size: 1.2rem; }
+
+/* Fjellsilhuett SVG */
+.mountain-svg {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* ── Innhold ─────────────────────────────────────────────── */
+.content {
+  background: var(--paper);
+}
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* ── Seksjonsoverskrifter ────────────────────────────────── */
 .section-title {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 1.5rem;
-  letter-spacing: -0.01em;
-  margin: 56px 0 22px;
+  font-weight: 800;
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
   color: var(--pine);
+  padding-top: 64px;
+  margin-bottom: 24px;
+}
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--stone-line);
 }
 
-/* ── Map ────────────────────────────────────────────────── */
-.map {
-  margin-top: 40px;
-}
+/* ── Kart ────────────────────────────────────────────────── */
 .map-frame {
-  position: relative;
   border: 1px solid var(--stone-line);
-  border-radius: 4px;
+  border-radius: 6px;
   overflow: hidden;
-  background: var(--paper);
+  background: var(--stone);
 }
 .map-frame iframe {
   display: block;
@@ -156,26 +219,27 @@ body {
   border: 0;
 }
 .map-placeholder {
-  height: 320px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 24px;
-  gap: 6px;
+  gap: 8px;
+  color: var(--ink-soft);
 }
 
-/* ── Posts ──────────────────────────────────────────────── */
+/* ── Dagbok ──────────────────────────────────────────────── */
 .posts {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 24px;
 }
 .post {
-  background: var(--paper);
+  background: #fff;
   border: 1px solid var(--stone-line);
-  border-radius: 4px;
+  border-radius: 6px;
   overflow: hidden;
 }
 .post-img {
@@ -184,48 +248,86 @@ body {
   height: auto;
 }
 .post-body {
-  padding: 18px 20px 22px;
+  padding: 20px 24px 24px;
 }
 .post-meta {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--ink-soft);
   margin-bottom: 8px;
 }
 .day-badge {
-  font-family: var(--display);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   color: var(--dnt-red);
 }
 .post h3 {
-  font-family: var(--display);
   font-weight: 700;
-  font-size: 1.25rem;
-  margin: 0 0 6px;
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+  color: var(--ink);
 }
 .post p {
-  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.65;
 }
 
-/* ── Guestbook ──────────────────────────────────────────── */
+/* ── Galleri ─────────────────────────────────────────────── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.gallery-grid img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  background: var(--stone);
+}
+.gallery-empty {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* ── Forberedelser ───────────────────────────────────────── */
+.prep-content {
+  background: #fff;
+  border: 1px solid var(--stone-line);
+  border-radius: 6px;
+  padding: 28px 32px;
+}
+.prep-content h3 {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--pine);
+  margin-bottom: 8px;
+  margin-top: 24px;
+}
+.prep-content h3:first-child { margin-top: 0; }
+.prep-content p {
+  color: var(--ink-soft);
+}
+
+/* ── Gjestebok ───────────────────────────────────────────── */
 .gb-form {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 .gb-form input,
 .gb-form textarea {
-  font-family: var(--body);
+  font-family: var(--font);
   font-size: 1rem;
   padding: 12px 14px;
   border: 1px solid var(--stone-line);
-  border-radius: 4px;
-  background: var(--paper);
+  border-radius: 6px;
+  background: #fff;
   color: var(--ink);
   resize: vertical;
 }
@@ -237,70 +339,61 @@ body {
 }
 .gb-form button {
   align-self: flex-start;
-  font-family: var(--display);
+  font-family: var(--font);
   font-weight: 700;
   font-size: 0.95rem;
-  color: var(--paper);
+  color: #fff;
   background: var(--dnt-red);
   border: 0;
-  border-radius: 4px;
-  padding: 11px 22px;
+  border-radius: 6px;
+  padding: 12px 24px;
   cursor: pointer;
+  transition: background 0.15s;
 }
-.gb-form button:hover {
-  background: #b51f17;
-}
-.gb-form button:disabled {
-  opacity: 0.6;
-  cursor: default;
-}
+.gb-form button:hover { background: var(--dnt-red-dark); }
+.gb-form button:disabled { opacity: 0.6; cursor: default; }
 .gb-error {
   color: var(--dnt-red);
   font-size: 0.9rem;
-  margin: 0;
 }
 .gb-list {
   list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
 }
 .gb-list li {
   border-left: 3px solid var(--dnt-red);
   padding: 4px 0 4px 16px;
+  background: #fff;
+  border-radius: 0 4px 4px 0;
+  padding: 12px 16px;
+  border-left: 3px solid var(--dnt-red);
 }
-.gb-msg {
-  margin: 0 0 4px;
-}
+.gb-msg { margin-bottom: 4px; }
 .gb-from {
-  margin: 0;
-  font-family: var(--display);
-  font-weight: 500;
-  font-size: 0.9rem;
+  font-weight: 600;
+  font-size: 0.88rem;
   color: var(--ink-soft);
 }
 
-/* ── Footer ─────────────────────────────────────────────── */
-.footer {
+/* ── Footer ──────────────────────────────────────────────── */
+.site-footer {
+  background: var(--pine);
+  color: var(--muted-on-dark);
+  padding: 32px 24px;
+  font-size: 0.88rem;
+}
+.site-footer-inner {
+  max-width: 820px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-top: 72px;
-  padding-top: 24px;
-  border-top: 1px solid var(--stone-line);
-  font-size: 0.85rem;
-  color: var(--ink-soft);
-}
-.footer p {
-  margin: 0;
+  gap: 12px;
 }
 
-.muted {
-  color: var(--ink-soft);
-  font-size: 0.92rem;
-}
+/* ── Hjelpeklasser ───────────────────────────────────────── */
+.muted { color: var(--ink-soft); font-size: 0.93rem; }
 code {
   background: var(--stone);
   padding: 1px 5px;
@@ -308,20 +401,17 @@ code {
   font-size: 0.85em;
 }
 
-@media (max-width: 480px) {
-  body {
-    font-size: 16px;
-  }
-  .hero {
-    padding: 44px 0 32px;
-  }
-  .map-frame iframe {
-    height: 420px;
-  }
+/* ── Mobil ───────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .hero { padding: 56px 20px 0; }
+  .hero h1 { font-size: clamp(3.5rem, 20vw, 5rem); }
+  .nav-links { display: none; }
+  .container { padding: 0 20px 60px; }
+  .prep-content { padding: 20px; }
+  .map-frame iframe { height: 380px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+  html { scroll-behavior: auto; }
 }
