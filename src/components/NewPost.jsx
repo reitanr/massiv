@@ -1,5 +1,31 @@
 import { useState, useRef } from "react";
 
+// Komprimerer bilde til maks 1600px bredde og 80% JPEG-kvalitet.
+// Reduserer typisk iPhone-bilde fra 8 MB til ~300–500 KB.
+async function compressImage(file, maxWidth = 1600, quality = 0.82) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      const scale = Math.min(1, maxWidth / img.width);
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.round(img.width * scale);
+      canvas.height = Math.round(img.height * scale);
+      canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+      canvas.toBlob(
+        (blob) => {
+          const name = file.name.replace(/\.[^.]+$/, ".jpg");
+          resolve(new File([blob], name, { type: "image/jpeg" }));
+        },
+        "image/jpeg",
+        quality
+      );
+    };
+    img.src = url;
+  });
+}
+
 export default function NewPost() {
   const [pin, setPin] = useState("");
   const [savedPin, setSavedPin] = useState(
@@ -23,11 +49,11 @@ export default function NewPost() {
     setUnlocked(true);
   }
 
-  function handleImages(e) {
+  async function handleImages(e) {
     const files = Array.from(e.target.files);
-    setImages(files);
-    const prev = files.map((f) => URL.createObjectURL(f));
-    setPreviews(prev);
+    const compressed = await Promise.all(files.map((f) => compressImage(f)));
+    setImages(compressed);
+    setPreviews(compressed.map((f) => URL.createObjectURL(f)));
   }
 
   function removeImage(i) {
