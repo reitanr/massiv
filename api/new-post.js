@@ -24,11 +24,12 @@ export default async function handler(req, res) {
       if (!mimeType?.startsWith('image/')) { stream.resume(); return; }
       const chunks = [];
       stream.on('data', c => chunks.push(c));
-      stream.on('end', () => images.push({
-        filename: filename || `bilde-${Date.now()}.jpg`,
-        mimeType,
-        buffer: Buffer.concat(chunks),
-      }));
+      stream.on('end', () => {
+        // Rens filnavnet for tegn som Supabase Storage ikke godtar
+        const raw = filename || `bilde-${Date.now()}.jpg`;
+        const safe = raw.replace(/[^a-zA-Z0-9._-]/g, '_');
+        images.push({ filename: safe, mimeType, buffer: Buffer.concat(chunks) });
+      });
     });
     busboy.on('finish', resolve);
     busboy.on('error', reject);
