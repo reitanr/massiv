@@ -1,10 +1,24 @@
+import { useState, useEffect } from "react";
 import { config } from "./config.js";
 import LiveMap from "./components/LiveMap.jsx";
 import PostsFeed from "./components/PostsFeed.jsx";
 import Guestbook from "./components/Guestbook.jsx";
 import Gallery from "./components/Gallery.jsx";
+import NewPost from "./components/NewPost.jsx";
 
 export default function App() {
+  const [isAdmin, setIsAdmin] = useState(
+    () => window.location.hash === "#ny-post"
+  );
+
+  useEffect(() => {
+    const handler = () => setIsAdmin(window.location.hash === "#ny-post");
+    window.addEventListener("hashchange", handler);
+    return () => window.removeEventListener("hashchange", handler);
+  }, []);
+
+  if (isAdmin) return <NewPost />;
+
   return (
     <>
       {/* Sticky navigasjon */}
