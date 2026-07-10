@@ -82,13 +82,49 @@ export default function PostsFeed() {
                   <time>{formatDate(post.created_at)}</time>
                 </div>
                 {post.title && <h3>{post.title}</h3>}
-                {post.body && <p>{post.body}</p>}
+                {post.body && renderBody(post.body)}
               </div>
             </article>
           );
         })}
       </div>
     </section>
+  );
+}
+
+// Gjenkjenner YouTube-lenker og viser dem som innebygde videospillere
+function renderBody(text) {
+  const ytRegex = /https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})[^\s]*/g;
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+
+  while ((match = ytRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      const before = text.slice(lastIndex, match.index).trim();
+      if (before) parts.push({ type: "text", content: before });
+    }
+    parts.push({ type: "youtube", id: match[1] });
+    lastIndex = match.index + match[0].length;
+  }
+
+  const remaining = text.slice(lastIndex).trim();
+  if (remaining) parts.push({ type: "text", content: remaining });
+  if (parts.length === 0) parts.push({ type: "text", content: text });
+
+  return parts.map((part, i) =>
+    part.type === "youtube" ? (
+      <div key={i} className="post-video">
+        <iframe
+          src={`https://www.youtube.com/embed/${part.id}`}
+          title="YouTube-video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+    ) : (
+      <p key={i} className="post-text">{part.content}</p>
+    )
   );
 }
 
