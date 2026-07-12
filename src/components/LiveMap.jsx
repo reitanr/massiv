@@ -43,28 +43,29 @@ function parseGPX(gpxText) {
 /* ── DNT-etapper (overnattingshytter, hviledager ekskludert) ─ */
 const HUTS = [
   // Breheimen
-  { name: "Sota Sæter",       dag: "Start", region: "Breheimen",       lat: 61.8088, lng: 7.7102 },
-  { name: "Nørdstedalseter",  dag: "Dag 1", region: "Breheimen",       lat: 61.688,  lng: 7.574  },
-  { name: "Sognefjellshytta", dag: "Dag 2", region: "Breheimen",       lat: 61.558,  lng: 8.015  },
-  { name: "Fannaråkhytta",    dag: "Dag 3", region: "Jotunheimen",     lat: 61.513,  lng: 7.907  },
+  // Koordinater hentet fra GPX-ruten (kumulativ distanse per etappe)
+  { name: "Sota Sæter",       dag: "Start",  region: "Breheimen",      lat: 61.80877, lng: 7.71019 },
+  { name: "Nørdstedalseter",  dag: "Dag 1",  region: "Breheimen",      lat: 61.64232, lng: 7.79666 },
+  { name: "Sognefjellshytta", dag: "Dag 2",  region: "Breheimen",      lat: 61.54389, lng: 7.97259 },
+  { name: "Fannaråkhytta",    dag: "Dag 3",  region: "Jotunheimen",    lat: 61.45172, lng: 8.02802 },
   // Jotunheimen
-  { name: "Skogadalsbøen",    dag: "Dag 4", region: "Jotunheimen",     lat: 61.448,  lng: 7.686  },
-  { name: "Fondsbu",          dag: "Dag 5", region: "Jotunheimen",     lat: 61.387,  lng: 8.263  },
-  { name: "Slettningsbu",     dag: "Dag 6", region: "Jotunheimen",     lat: 61.248,  lng: 8.389  },
-  { name: "Sulebu",           dag: "Dag 7", region: "Jotunheimen",     lat: 61.143,  lng: 8.249  },
+  { name: "Skogadalsbøen",    dag: "Dag 4",  region: "Jotunheimen",    lat: 61.39587, lng: 8.15003 },
+  { name: "Fondsbu",          dag: "Dag 5",  region: "Jotunheimen",    lat: 61.29855, lng: 8.16489 },
+  { name: "Slettningsbu",     dag: "Dag 6",  region: "Jotunheimen",    lat: 61.15834, lng: 8.11952 },
+  { name: "Sulebu",           dag: "Dag 7",  region: "Jotunheimen",    lat: 61.04906, lng: 8.10363 },
   // Skarvheimen
-  { name: "Skarvheim",        dag: "Dag 8", region: "Skarvheimen",     lat: 60.976,  lng: 7.951  },
-  { name: "Bjordalsbu",       dag: "Dag 9", region: "Skarvheimen",     lat: 60.857,  lng: 7.726  },
-  { name: "Iungsdalshytta",   dag: "Dag 10", region: "Skarvheimen",   lat: 60.793,  lng: 7.570  },
-  { name: "Geiterygghytta",   dag: "Dag 11", region: "Skarvheimen",   lat: 60.661,  lng: 7.489  },
-  { name: "Finsehytta",       dag: "Dag 12", region: "Hardangervidda",lat: 60.594,  lng: 7.505  },
+  { name: "Skarvheim",        dag: "Dag 8",  region: "Skarvheimen",    lat: 60.92133, lng: 7.99816 },
+  { name: "Bjordalsbu",       dag: "Dag 9",  region: "Skarvheimen",    lat: 60.82122, lng: 7.92338 },
+  { name: "Iungsdalshytta",   dag: "Dag 10", region: "Skarvheimen",    lat: 60.77777, lng: 7.69953 },
+  { name: "Geiterygghytta",   dag: "Dag 11", region: "Skarvheimen",    lat: 60.58421, lng: 7.51875 },
+  { name: "Finsehytta",       dag: "Dag 12", region: "Hardangervidda", lat: 60.48273, lng: 7.67776 },
   // Hardangervidda
-  { name: "Krækkja",          dag: "Dag 13", region: "Hardangervidda",lat: 60.443,  lng: 7.448  },
-  { name: "Stigstuv",         dag: "Dag 14", region: "Hardangervidda",lat: 60.279,  lng: 7.524  },
-  { name: "Sandhaug",         dag: "Dag 15", region: "Hardangervidda",lat: 60.141,  lng: 7.643  },
-  { name: "Litlos",           dag: "Dag 16", region: "Hardangervidda",lat: 60.057,  lng: 7.211  },
-  { name: "Hellevassbu",      dag: "Dag 17", region: "Hardangervidda",lat: 59.933,  lng: 7.087  },
-  { name: "Haukeliseter",     dag: "Mål",    region: "Hardangervidda",lat: 59.817,  lng: 7.217  },
+  { name: "Krækkja",          dag: "Dag 13", region: "Hardangervidda", lat: 60.29622, lng: 7.65044 },
+  { name: "Stigstuv",         dag: "Dag 14", region: "Hardangervidda", lat: 60.17827, lng: 7.47458 },
+  { name: "Sandhaug",         dag: "Dag 15", region: "Hardangervidda", lat: 60.10117, lng: 7.14813 },
+  { name: "Litlos",           dag: "Dag 16", region: "Hardangervidda", lat: 59.92119, lng: 7.20840 },
+  { name: "Hellevassbu",      dag: "Dag 17", region: "Hardangervidda", lat: 59.83438, lng: 7.21119 },
+  { name: "Haukeliseter",     dag: "Mål",    region: "Hardangervidda", lat: 59.82377, lng: 7.19460 },
 ];
 
 /* ── Komponent ──────────────────────────────────────────────── */
