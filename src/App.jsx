@@ -98,9 +98,12 @@ function Preparations() {
       <div className="prep-content">
         <h3>Om turen</h3>
         <p>
-          Massiv er DNTs lengste sammenhengende fottur – om lag 500 km tvers
-          gjennom Sør-Norge. Turen går fra Suleskard i Rogaland til Finse i
-          Hardanger og videre østover.
+          Massiv er DNTs lengste sammenhengende fottur – 341 kilometer fra
+          Sota Sæter i Breheimen til Haukeliseter på Hardangervidda. Ruten
+          krysser fire av Norges villeste fjellområder: Breheimen, Jotunheimen,
+          Skarvheimen og Hardangervidda. Totalt passerer man over 9 000
+          høydemeter, med høyeste punkt på Fannaråken (2 068 moh). Turen er
+          beregnet til 18 vandredager med overnatting på DNT-hytter underveis.
         </p>
         <h3>Utstyr</h3>
         <p>Kommer.</p>
