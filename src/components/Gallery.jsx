@@ -24,13 +24,13 @@ export default function Gallery() {
     <section id="galleri">
       <h2 className="section-title">
         <span className="t-mark" aria-hidden="true" />
-        Galleri
+        Gallery
       </h2>
 
-      {status === "laster" && <p className="muted">Laster bilder …</p>}
+      {status === "laster" && <p className="muted">Loading photos…</p>}
       {status === "klar" && images.length === 0 && (
         <p className="gallery-empty">
-          Bilder fra turen dukker opp her etter hvert som innlegg sendes inn.
+          Photos from the trail will appear here as diary entries are posted.
         </p>
       )}
 
@@ -40,7 +40,7 @@ export default function Gallery() {
             <img
               key={img.id}
               src={img.url}
-              alt={img.posts?.title || "Bilde fra turen"}
+              alt={img.posts?.title || "Photo from the trail"}
               loading="lazy"
             />
           ))}

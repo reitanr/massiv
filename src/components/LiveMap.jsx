@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
+import { config } from "../config.js";
 
 /* ── KML-parser (Garmin MapShare) ───────────────────────────── */
 function parseKML(kmlText) {
@@ -146,10 +147,11 @@ export default function LiveMap() {
         /* GPX-fil finnes ikke ennå – greit */
       }
 
-      // ── Live Garmin-spor ─────────────────────────────────────
+      // ── Live Garmin-spor (vises bare fra og med startdato) ───
+      const hikeStarted = !config.hikeStartDate || new Date() >= new Date(config.hikeStartDate);
       try {
-        const garminRes = await fetch("/api/garmin-feed");
-        if (!cancelled && garminRes.ok) {
+        const garminRes = hikeStarted ? await fetch("/api/garmin-feed") : null;
+        if (!cancelled && garminRes?.ok) {
           const positions = parseKML(await garminRes.text());
 
           if (positions.length > 0) {
@@ -179,7 +181,7 @@ export default function LiveMap() {
             });
             L.marker(last, { icon: dot })
               .addTo(map)
-              .bindPopup("<b>Robert er her nå</b>");
+              .bindPopup("<b>Robert's current location</b>");
 
             if (!cancelled) {
               setHasLive(true);
@@ -211,7 +213,7 @@ export default function LiveMap() {
     <section id="kart">
       <h2 className="section-title">
         <span className="t-mark" aria-hidden="true" />
-        Kart
+        Map
       </h2>
       <div className="map-frame">
         <div ref={containerRef} className="leaflet-map" />
@@ -219,18 +221,18 @@ export default function LiveMap() {
       <div className="map-legend">
         <span className="legend-item">
           <span className="legend-line" style={{ background: "#1a6fc4" }} />
-          Planlagt rute
+          Planned route
         </span>
         <span className="legend-item">
           <span className="legend-line" style={{ background: "#e07020" }} />
-          Gått strekning (Garmin inReach)
+          Tracked route (Garmin inReach)
         </span>
         <span className="legend-item">
           <span className="legend-hut" />
-          DNT-etappe (klikk for info)
+          Overnight stop (click for info)
         </span>
         {!hasRoute && !hasLive && (
-          <span className="legend-note">Kartet viser Sør-Norge. Rute og spor legges til under turen.</span>
+          <span className="legend-note">Map shows Southern Norway. Route and live track will appear when the hike begins.</span>
         )}
       </div>
     </section>

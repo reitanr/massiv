@@ -25,7 +25,7 @@ export default function Guestbook() {
   async function submit() {
     setError("");
     if (!name.trim() || !message.trim()) {
-      setError("Fyll inn både navn og hilsen.");
+      setError("Please fill in both your name and a message.");
       return;
     }
     setSending(true);
@@ -34,7 +34,7 @@ export default function Guestbook() {
       .insert({ name: name.trim(), message: message.trim() });
     setSending(false);
     if (error) {
-      setError("Klarte ikke å sende hilsenen. Prøv igjen.");
+      setError("Could not send your message. Please try again.");
       return;
     }
     setName("");
@@ -48,19 +48,19 @@ export default function Guestbook() {
     <section className="guestbook" id="gjestebok">
       <h2 className="section-title">
         <span className="t-mark" aria-hidden="true" />
-        Gjestebok
+        Guestbook
       </h2>
 
       <div className="gb-form">
         <input
           type="text"
-          placeholder="Navnet ditt"
+          placeholder="Your name"
           value={name}
           maxLength={40}
           onChange={(e) => setName(e.target.value)}
         />
         <textarea
-          placeholder="Skriv en hilsen til turfølget …"
+          placeholder="Leave a message for Robert…"
           value={message}
           maxLength={500}
           rows={3}
@@ -68,7 +68,7 @@ export default function Guestbook() {
         />
         {error && <p className="gb-error">{error}</p>}
         <button onClick={submit} disabled={sending}>
-          {sending ? "Sender …" : "Send hilsen"}
+          {sending ? "Sending…" : "Send message"}
         </button>
       </div>
 

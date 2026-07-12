@@ -29,11 +29,11 @@ export default function App() {
             <span className="nav-logo-text">{config.title}</span>
           </a>
           <ul className="nav-links">
-            <li><a href="#dagbok">Dagbok</a></li>
-            <li><a href="#galleri">Galleri</a></li>
-            <li><a href="#kart">Kart</a></li>
-            <li><a href="#forberedelser">Forberedelser</a></li>
-            <li><a href="#gjestebok">Gjestebok</a></li>
+            <li><a href="#dagbok">Diary</a></li>
+            <li><a href="#galleri">Gallery</a></li>
+            <li><a href="#kart">Map</a></li>
+            <li><a href="#forberedelser">About</a></li>
+            <li><a href="#gjestebok">Guestbook</a></li>
           </ul>
         </div>
       </nav>
@@ -48,7 +48,7 @@ export default function App() {
           <h1>{config.title}</h1>
           <p className="hero-sub">{config.subtitle}</p>
           <p className="hero-scroll">
-            <span>↓</span> Følg turen live
+            <span>↓</span> Follow the journey live
           </p>
         </div>
 
@@ -81,7 +81,7 @@ export default function App() {
       <footer className="site-footer">
         <div className="site-footer-inner">
           <span className="t-mark on-dark" aria-hidden="true" />
-          <p>{config.walker} · {config.startDato} · Sporet live via Garmin inReach</p>
+          <p>{config.walker} · {config.startDato} · Tracked live via Garmin inReach</p>
         </div>
       </footer>
     </>
@@ -93,23 +93,35 @@ function Preparations() {
     <section id="forberedelser">
       <h2 className="section-title">
         <span className="t-mark" aria-hidden="true" />
-        Forberedelser
+        About
       </h2>
       <div className="prep-content">
-        <h3>Om turen</h3>
+        <h3>About the route</h3>
         <p>
-          Massiv er DNTs lengste sammenhengende fottur – 341 kilometer fra
-          Sota Sæter i Breheimen til Haukeliseter på Hardangervidda. Ruten
-          krysser fire av Norges villeste fjellområder: Breheimen, Jotunheimen,
-          Skarvheimen og Hardangervidda. Totalt passerer man over 9 000
-          høydemeter, med høyeste punkt på Fannaråken (2 068 moh). Turen er
-          beregnet til 18 vandredager, med overnatting delvis på DNT-hytter
-          og delvis i telt.
+          Massiv is DNT's longest continuous hiking trail — 341 kilometres from
+          Sota Sæter in Breheimen to Haukeliseter on Hardangervidda. The route
+          crosses four of Norway's most spectacular mountain regions: Breheimen,
+          Jotunheimen, Skarvheimen and Hardangervidda. Total elevation gain
+          exceeds 9,000 metres, with the highest point at Fannaråken (2,068 m).
+          The trail is planned as 18 hiking days, with nights split between
+          DNT mountain huts and tent camping.
         </p>
-        <h3>Utstyr</h3>
-        <p>Kommer.</p>
-        <h3>Planlegging</h3>
-        <p>Kommer.</p>
+
+        <div className="prep-stats">
+          <div><span className="stat-label">Distance</span><span className="stat-value">341 km</span></div>
+          <div><span className="stat-label">Duration</span><span className="stat-value">18 days</span></div>
+          <div><span className="stat-label">Elevation gain</span><span className="stat-value">9,234 m</span></div>
+          <div><span className="stat-label">Highest point</span><span className="stat-value">Fannaråken 2,068 m</span></div>
+          <div><span className="stat-label">Season</span><span className="stat-value">July – August</span></div>
+          <div><span className="stat-label">Difficulty</span><span className="stat-value">Strenuous</span></div>
+          <div><span className="stat-label">Accommodation</span><span className="stat-value">Huts &amp; tent</span></div>
+          <div><span className="stat-label">Mountain regions</span><span className="stat-value">4</span></div>
+        </div>
+
+        <h3>Gear</h3>
+        <p>Coming.</p>
+        <h3>Planning</h3>
+        <p>Coming.</p>
       </div>
     </section>
   );
