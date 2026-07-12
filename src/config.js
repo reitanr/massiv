@@ -18,4 +18,9 @@ export const config = {
 
   // Omtrentlig start, vises som intro. Juster fritt.
   startDato: "Sommeren 2026",
+
+  // Når turen faktisk starter (ISO-format: "YYYY-MM-DD").
+  // Live Garmin-sporet vises bare fra og med denne datoen.
+  // Sett til null for å alltid vise sporet.
+  hikeStartDate: "2026-08-02",
 };
