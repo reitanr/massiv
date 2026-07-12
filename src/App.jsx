@@ -103,7 +103,8 @@ function Preparations() {
           krysser fire av Norges villeste fjellområder: Breheimen, Jotunheimen,
           Skarvheimen og Hardangervidda. Totalt passerer man over 9 000
           høydemeter, med høyeste punkt på Fannaråken (2 068 moh). Turen er
-          beregnet til 18 vandredager med overnatting på DNT-hytter underveis.
+          beregnet til 18 vandredager, med overnatting delvis på DNT-hytter
+          og delvis i telt.
         </p>
         <h3>Utstyr</h3>
         <p>Kommer.</p>
