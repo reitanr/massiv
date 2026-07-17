@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { config } from "./config.js";
 import LiveMap from "./components/LiveMap.jsx";
 import PostsFeed from "./components/PostsFeed.jsx";
@@ -118,6 +118,88 @@ const REGION_COLOR = {
   Hardangervidda: "#c07020",
 };
 
+function CountUp({ target, suffix = "", prefix = "" }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const started = useRef(false);
+  useEffect(() => {
+    const el = ref.current;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true;
+          const dur = 1400;
+          const t0 = performance.now();
+          const tick = (now) => {
+            const p = Math.min((now - t0) / dur, 1);
+            const eased = 1 - Math.pow(1 - p, 3);
+            setCount(Math.round(eased * target));
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }
+      },
+      { threshold: 0.3 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [target]);
+  return <span ref={ref}>{prefix}{count.toLocaleString()}{suffix}</span>;
+}
+
+function RegionCards() {
+  const regions = Object.keys(REGION_COLOR);
+  const cards = regions.map((region) => {
+    const s = STAGES.filter((st) => st.region === region);
+    return {
+      region,
+      color: REGION_COLOR[region],
+      days: s.length,
+      km: s.reduce((a, b) => a + b.km, 0),
+      ascent: s.reduce((a, b) => a + b.ascent, 0),
+    };
+  });
+  return (
+    <div className="region-cards">
+      {cards.map(({ region, color, days, km, ascent }) => (
+        <div key={region} className="region-card">
+          <div className="rc-accent" style={{ background: color }} />
+          <div className="rc-body">
+            <div className="rc-name" style={{ color }}>{region}</div>
+            <div className="rc-row"><span className="rc-lbl">Stages</span><span className="rc-val">{days}</span></div>
+            <div className="rc-row"><span className="rc-lbl">Distance</span><span className="rc-val">{km} km</span></div>
+            <div className="rc-row"><span className="rc-lbl">Ascent</span><span className="rc-val">{ascent.toLocaleString()} m</span></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ElevationChart() {
+  const max = Math.max(...STAGES.map((s) => s.ascent));
+  return (
+    <div className="elev-chart">
+      <div className="elev-bars">
+        {STAGES.map((s) => (
+          <div
+            key={s.day}
+            className="elev-bar-wrap"
+            title={`Day ${s.day}: ${s.ascent.toLocaleString()} m ascent`}
+          >
+            <div
+              className="elev-bar"
+              style={{ height: `${(s.ascent / max) * 100}%`, background: REGION_COLOR[s.region] }}
+            />
+            <div className="elev-bar-day">{s.day}</div>
+          </div>
+        ))}
+      </div>
+      <p className="elev-chart-note">Ascent per day — colours show region. Day 2 is the hardest with {max.toLocaleString()} m.</p>
+    </div>
+  );
+}
+
 function diffDots(n) {
   const color = n <= 2 ? "#2a7d1e" : n === 3 ? "#c07020" : "#c0392b";
   return Array.from({ length: 5 }, (_, i) => (
@@ -133,6 +215,7 @@ function Stages() {
         Stages
       </h2>
       <div className="stages-wrap">
+        <RegionCards />
         <table className="stages-table">
           <thead>
             <tr>
@@ -161,6 +244,7 @@ function Stages() {
             ))}
           </tbody>
         </table>
+        <ElevationChart />
         <p className="stages-note">Ascent figures are GPS-verified from Garmin Fenix data (florus.no/massiv). Days 8–9 and 14–15 are approximated from adjacent sections on similar terrain. Total: ~15,350 m.</p>
       </div>
     </section>
@@ -187,9 +271,9 @@ function Preparations() {
         </p>
 
         <div className="prep-stats">
-          <div><span className="stat-label">Distance</span><span className="stat-value">341 km</span></div>
-          <div><span className="stat-label">Duration</span><span className="stat-value">18 days</span></div>
-          <div><span className="stat-label">Elevation gain</span><span className="stat-value">~15,350 m</span></div>
+          <div><span className="stat-label">Distance</span><span className="stat-value"><CountUp target={341} suffix=" km" /></span></div>
+          <div><span className="stat-label">Duration</span><span className="stat-value"><CountUp target={18} suffix=" days" /></span></div>
+          <div><span className="stat-label">Elevation gain</span><span className="stat-value"><CountUp target={15350} prefix="~" suffix=" m" /></span></div>
           <div><span className="stat-label">Highest point</span><span className="stat-value">Fannaråken 2,068 m</span></div>
           <div><span className="stat-label">Season</span><span className="stat-value">July – August</span></div>
           <div><span className="stat-label">Difficulty</span><span className="stat-value">Strenuous</span></div>

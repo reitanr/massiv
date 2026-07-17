@@ -483,6 +483,73 @@ body {
   font-style: italic;
 }
 
+/* ── Region cards ────────────────────────────────────────── */
+.region-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.region-card {
+  border: 1px solid var(--stone-line);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+}
+.rc-accent { height: 4px; }
+.rc-body { padding: 12px 14px; }
+.rc-name {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+.rc-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  padding: 2px 0;
+}
+.rc-lbl { color: var(--ink-soft); }
+.rc-val { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+/* ── Elevation chart ─────────────────────────────────────── */
+.elev-chart { margin-top: 14px; }
+.elev-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 80px;
+}
+.elev-bar-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+}
+.elev-bar {
+  width: 100%;
+  border-radius: 2px 2px 0 0;
+  min-height: 2px;
+  transition: opacity 0.15s;
+}
+.elev-bar-wrap:hover .elev-bar { opacity: 0.65; }
+.elev-bar-day {
+  font-size: 0.58rem;
+  color: var(--ink-soft);
+  margin-top: 3px;
+  font-variant-numeric: tabular-nums;
+}
+.elev-chart-note {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
 /* ── Gjestebok ───────────────────────────────────────────── */
 .gb-form {
   display: flex;
@@ -713,6 +780,7 @@ code {
   .container { padding: 0 20px 60px; }
   .prep-content { padding: 20px; }
   .map-frame iframe { height: 380px; }
+  .region-cards { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (prefers-reduced-motion: reduce) {
