@@ -91,24 +91,24 @@ export default function App() {
 }
 
 const STAGES = [
-  { day: 1,  from: "Sota Sæter",      to: "Nørdstedalseter",  region: "Breheimen",      km: 24, ascent: 1691, diff: 4 },
-  { day: 2,  from: "Nørdstedalseter", to: "Sognefjellshytta", region: "Breheimen",      km: 25, ascent: 1838, diff: 5 },
-  { day: 3,  from: "Sognefjellshytta",to: "Fannaråkhytta",    region: "Jotunheimen",    km: 18, ascent:  895, diff: 4 },
-  { day: 4,  from: "Fannaråkhytta",   to: "Skogadalsbøen",    region: "Jotunheimen",    km: 11, ascent:  200, diff: 2 },
-  { day: 5,  from: "Skogadalsbøen",   to: "Fondsbu",          region: "Jotunheimen",    km: 24, ascent:  550, diff: 3 },
-  { day: 6,  from: "Fondsbu",         to: "Slettningsbu",     region: "Jotunheimen",    km: 23, ascent:  300, diff: 3 },
-  { day: 7,  from: "Slettningsbu",    to: "Sulebu",           region: "Jotunheimen",    km: 17, ascent:  300, diff: 2 },
-  { day: 8,  from: "Sulebu",          to: "Skarvheim",        region: "Skarvheimen",    km: 19, ascent:  450, diff: 3 },
-  { day: 9,  from: "Skarvheim",       to: "Bjordalsbu",       region: "Skarvheimen",    km: 13, ascent:  400, diff: 3 },
-  { day: 10, from: "Bjordalsbu",      to: "Iungsdalshytta",   region: "Skarvheimen",    km: 16, ascent:  350, diff: 3 },
-  { day: 11, from: "Iungsdalshytta",  to: "Geiterygghytta",   region: "Skarvheimen",    km: 29, ascent:  550, diff: 5 },
-  { day: 12, from: "Geiterygghytta",  to: "Finsehytta",       region: "Skarvheimen",    km: 16, ascent:  300, diff: 3 },
-  { day: 13, from: "Finsehytta",      to: "Krækkja",          region: "Hardangervidda", km: 24, ascent:  300, diff: 2 },
-  { day: 14, from: "Krækkja",         to: "Stigstuv",         region: "Hardangervidda", km: 20, ascent:  200, diff: 2 },
-  { day: 15, from: "Stigstuv",        to: "Sandhaug",         region: "Hardangervidda", km: 23, ascent:  200, diff: 2 },
-  { day: 16, from: "Sandhaug",        to: "Litlos",           region: "Hardangervidda", km: 25, ascent:  200, diff: 3 },
-  { day: 17, from: "Litlos",          to: "Hellevassbu",      region: "Hardangervidda", km: 16, ascent:  150, diff: 1 },
-  { day: 18, from: "Hellevassbu",     to: "Haukeliseter",     region: "Hardangervidda", km: 21, ascent:  350, diff: 3 },
+  { day: 1,  from: "Sota Sæter",      to: "Nørdstedalseter",  region: "Breheimen",      km: 26, ascent: 1691, diff: 4 },
+  { day: 2,  from: "Nørdstedalseter", to: "Sognefjellshytta", region: "Breheimen",      km: 26, ascent: 1838, diff: 5 },
+  { day: 3,  from: "Sognefjellshytta",to: "Fannaråkhytta",    region: "Jotunheimen",    km: 16, ascent:  895, diff: 4 },
+  { day: 4,  from: "Fannaråkhytta",   to: "Skogadalsbøen",    region: "Jotunheimen",    km: 12, ascent:  500, diff: 2 },
+  { day: 5,  from: "Skogadalsbøen",   to: "Fondsbu",          region: "Jotunheimen",    km: 25, ascent: 1059, diff: 4 },
+  { day: 6,  from: "Fondsbu",         to: "Slettningsbu",     region: "Jotunheimen",    km: 24, ascent:  756, diff: 3 },
+  { day: 7,  from: "Slettningsbu",    to: "Sulebu",           region: "Jotunheimen",    km: 19, ascent:  754, diff: 3 },
+  { day: 8,  from: "Sulebu",          to: "Skarvheim",        region: "Skarvheimen",    km: 21, ascent:  832, diff: 3 },
+  { day: 9,  from: "Skarvheim",       to: "Bjordalsbu",       region: "Skarvheimen",    km: 13, ascent:  785, diff: 3 },
+  { day: 10, from: "Bjordalsbu",      to: "Iungsdalshytta",   region: "Skarvheimen",    km: 17, ascent:  465, diff: 2 },
+  { day: 11, from: "Iungsdalshytta",  to: "Geiterygghytta",   region: "Skarvheimen",    km: 30, ascent:  993, diff: 5 },
+  { day: 12, from: "Geiterygghytta",  to: "Finsehytta",       region: "Skarvheimen",    km: 17, ascent:  685, diff: 3 },
+  { day: 13, from: "Finsehytta",      to: "Krækkja",          region: "Hardangervidda", km: 25, ascent:  797, diff: 3 },
+  { day: 14, from: "Krækkja",         to: "Stigstuv",         region: "Hardangervidda", km: 20, ascent:  700, diff: 2 },
+  { day: 15, from: "Stigstuv",        to: "Sandhaug",         region: "Hardangervidda", km: 24, ascent:  644, diff: 2 },
+  { day: 16, from: "Sandhaug",        to: "Litlos",           region: "Hardangervidda", km: 27, ascent:  661, diff: 3 },
+  { day: 17, from: "Litlos",          to: "Hellevassbu",      region: "Hardangervidda", km: 18, ascent:  552, diff: 1 },
+  { day: 18, from: "Hellevassbu",     to: "Haukeliseter",     region: "Hardangervidda", km: 23, ascent:  743, diff: 3 },
 ];
 
 const REGION_COLOR = {
@@ -161,7 +161,7 @@ function Stages() {
             ))}
           </tbody>
         </table>
-        <p className="stages-note">Elevation figures for days 1–3 are from field records. Remaining stages are calculated estimates summing to the route total of 9,234 m.</p>
+        <p className="stages-note">Ascent figures are GPS-verified from Garmin Fenix data (florus.no/massiv). Days 8–9 and 14–15 are approximated from adjacent sections on similar terrain. Total: ~15,350 m.</p>
       </div>
     </section>
   );
@@ -181,7 +181,7 @@ function Preparations() {
           Sota Sæter in Breheimen to Haukeliseter on Hardangervidda. The route
           crosses four of Norway's most spectacular mountain regions: Breheimen,
           Jotunheimen, Skarvheimen and Hardangervidda. Total elevation gain
-          exceeds 9,000 metres, with the highest point at Fannaråken (2,068 m).
+          exceeds 15,000 metres, with the highest point at Fannaråken (2,068 m).
           The trail is planned as 18 hiking days, with nights split between
           DNT mountain huts and tent camping.
         </p>
@@ -189,7 +189,7 @@ function Preparations() {
         <div className="prep-stats">
           <div><span className="stat-label">Distance</span><span className="stat-value">341 km</span></div>
           <div><span className="stat-label">Duration</span><span className="stat-value">18 days</span></div>
-          <div><span className="stat-label">Elevation gain</span><span className="stat-value">9,234 m</span></div>
+          <div><span className="stat-label">Elevation gain</span><span className="stat-value">~15,350 m</span></div>
           <div><span className="stat-label">Highest point</span><span className="stat-value">Fannaråken 2,068 m</span></div>
           <div><span className="stat-label">Season</span><span className="stat-value">July – August</span></div>
           <div><span className="stat-label">Difficulty</span><span className="stat-value">Strenuous</span></div>
