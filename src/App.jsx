@@ -32,6 +32,7 @@ export default function App() {
             <li><a href="#dagbok">Diary</a></li>
             <li><a href="#galleri">Gallery</a></li>
             <li><a href="#kart">Map</a></li>
+            <li><a href="#stages">Stages</a></li>
             <li><a href="#forberedelser">About</a></li>
             <li><a href="#gjestebok">Guestbook</a></li>
           </ul>
@@ -73,6 +74,7 @@ export default function App() {
           <PostsFeed />
           <Gallery />
           <LiveMap />
+          <Stages />
           <Preparations />
           <Guestbook />
         </div>
@@ -85,6 +87,83 @@ export default function App() {
         </div>
       </footer>
     </>
+  );
+}
+
+const STAGES = [
+  { day: 1,  from: "Sota Sæter",      to: "Nørdstedalseter",  region: "Breheimen",      km: 24, ascent: 1691, diff: 4 },
+  { day: 2,  from: "Nørdstedalseter", to: "Sognefjellshytta", region: "Breheimen",      km: 25, ascent: 1838, diff: 5 },
+  { day: 3,  from: "Sognefjellshytta",to: "Fannaråkhytta",    region: "Jotunheimen",    km: 18, ascent:  895, diff: 4 },
+  { day: 4,  from: "Fannaråkhytta",   to: "Skogadalsbøen",    region: "Jotunheimen",    km: 11, ascent:  200, diff: 2 },
+  { day: 5,  from: "Skogadalsbøen",   to: "Fondsbu",          region: "Jotunheimen",    km: 24, ascent:  550, diff: 3 },
+  { day: 6,  from: "Fondsbu",         to: "Slettningsbu",     region: "Jotunheimen",    km: 23, ascent:  300, diff: 3 },
+  { day: 7,  from: "Slettningsbu",    to: "Sulebu",           region: "Jotunheimen",    km: 17, ascent:  300, diff: 2 },
+  { day: 8,  from: "Sulebu",          to: "Skarvheim",        region: "Skarvheimen",    km: 19, ascent:  450, diff: 3 },
+  { day: 9,  from: "Skarvheim",       to: "Bjordalsbu",       region: "Skarvheimen",    km: 13, ascent:  400, diff: 3 },
+  { day: 10, from: "Bjordalsbu",      to: "Iungsdalshytta",   region: "Skarvheimen",    km: 16, ascent:  350, diff: 3 },
+  { day: 11, from: "Iungsdalshytta",  to: "Geiterygghytta",   region: "Skarvheimen",    km: 29, ascent:  550, diff: 5 },
+  { day: 12, from: "Geiterygghytta",  to: "Finsehytta",       region: "Skarvheimen",    km: 16, ascent:  300, diff: 3 },
+  { day: 13, from: "Finsehytta",      to: "Krækkja",          region: "Hardangervidda", km: 24, ascent:  300, diff: 2 },
+  { day: 14, from: "Krækkja",         to: "Stigstuv",         region: "Hardangervidda", km: 20, ascent:  200, diff: 2 },
+  { day: 15, from: "Stigstuv",        to: "Sandhaug",         region: "Hardangervidda", km: 23, ascent:  200, diff: 2 },
+  { day: 16, from: "Sandhaug",        to: "Litlos",           region: "Hardangervidda", km: 25, ascent:  200, diff: 3 },
+  { day: 17, from: "Litlos",          to: "Hellevassbu",      region: "Hardangervidda", km: 16, ascent:  150, diff: 1 },
+  { day: 18, from: "Hellevassbu",     to: "Haukeliseter",     region: "Hardangervidda", km: 21, ascent:  350, diff: 3 },
+];
+
+const REGION_COLOR = {
+  Breheimen:      "#2a7d1e",
+  Jotunheimen:    "#1a6fc4",
+  Skarvheimen:    "#7b3fa0",
+  Hardangervidda: "#c07020",
+};
+
+function diffDots(n) {
+  const color = n <= 2 ? "#2a7d1e" : n === 3 ? "#c07020" : "#c0392b";
+  return Array.from({ length: 5 }, (_, i) => (
+    <span key={i} className="diff-dot" style={{ background: i < n ? color : "#ddd9d0" }} />
+  ));
+}
+
+function Stages() {
+  return (
+    <section id="stages">
+      <h2 className="section-title">
+        <span className="t-mark" aria-hidden="true" />
+        Stages
+      </h2>
+      <div className="stages-wrap">
+        <table className="stages-table">
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Route</th>
+              <th>Region</th>
+              <th>km</th>
+              <th>Ascent</th>
+              <th>Difficulty</th>
+            </tr>
+          </thead>
+          <tbody>
+            {STAGES.map((s) => (
+              <tr key={s.day}>
+                <td className="st-day">{s.day}</td>
+                <td className="st-route">{s.from} → {s.to}</td>
+                <td>
+                  <span className="st-region" style={{ borderColor: REGION_COLOR[s.region], color: REGION_COLOR[s.region] }}>
+                    {s.region}
+                  </span>
+                </td>
+                <td className="st-num">{s.km}</td>
+                <td className="st-num">{s.ascent.toLocaleString()} m</td>
+                <td className="st-diff">{diffDots(s.diff)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className="stages-note">Elevation figures for days 1–3 are from field records. Remaining stages are calculated estimates summing to the route total of 9,234 m.</p>
+      </div>
+    </section>
   );
 }
 
