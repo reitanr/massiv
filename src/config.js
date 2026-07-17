@@ -22,5 +22,5 @@ export const config = {
   // Når turen faktisk starter (ISO-format: "YYYY-MM-DD").
   // Live Garmin-sporet vises bare fra og med denne datoen.
   // Sett til null for å alltid vise sporet.
-  hikeStartDate: "2026-08-02",
+  hikeStartDate: "2020-01-01", // MIDLERTIDIG – sett tilbake til "2026-08-02" etter test
 };
