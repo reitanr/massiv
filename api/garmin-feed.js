@@ -6,8 +6,10 @@ export default async function handler(req, res) {
   const name = process.env.GARMIN_MAPSHARE_NAME || "6HFRJ";
 
   try {
+    // Hent data fra siste 30 dager (uten d1-parameter returnerer Garmin gammel bufret data)
+    const d1 = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
     const response = await fetch(
-      `https://share.garmin.com/Feed/Share/${name}`,
+      `https://share.garmin.com/Feed/Share/${name}?d1=${encodeURIComponent(d1)}`,
       {
         headers: {
           "User-Agent":
