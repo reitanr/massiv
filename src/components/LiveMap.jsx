@@ -158,7 +158,7 @@ export default function LiveMap() {
             // Spor-linje
             if (positions.length > 1) {
               L.polyline(positions, {
-                color: "#e07020",
+                color: "#e8005a",
                 weight: 3,
                 opacity: 0.9,
                 lineJoin: "round",
@@ -171,7 +171,7 @@ export default function LiveMap() {
               className: "",
               html: `<div style="
                 width: 16px; height: 16px;
-                background: #e07020;
+                background: #e8005a;
                 border: 3px solid #fff;
                 border-radius: 50%;
                 box-shadow: 0 2px 6px rgba(0,0,0,.45);
@@ -224,7 +224,7 @@ export default function LiveMap() {
           Planned route
         </span>
         <span className="legend-item">
-          <span className="legend-line" style={{ background: "#e07020" }} />
+          <span className="legend-line" style={{ background: "#e8005a" }} />
           Tracked route (Garmin inReach)
         </span>
         <span className="legend-item">
