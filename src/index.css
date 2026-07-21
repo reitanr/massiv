@@ -549,6 +549,8 @@ body {
   color: var(--ink-soft);
   font-style: italic;
 }
+.st-weather { white-space: nowrap; font-size: 0.88rem; }
+.st-weather-na { color: var(--stone-line); }
 
 /* ── Gjestebok ───────────────────────────────────────────── */
 .gb-form {

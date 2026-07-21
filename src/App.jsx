@@ -91,24 +91,24 @@ export default function App() {
 }
 
 const STAGES = [
-  { day: 1,  from: "Sota Sæter",      to: "Nørdstedalseter",  region: "Breheimen",      km: 26, ascent: 1691, diff: 4 },
-  { day: 2,  from: "Nørdstedalseter", to: "Sognefjellshytta", region: "Breheimen",      km: 26, ascent: 1838, diff: 5 },
-  { day: 3,  from: "Sognefjellshytta",to: "Fannaråkhytta",    region: "Jotunheimen",    km: 16, ascent:  895, diff: 4 },
-  { day: 4,  from: "Fannaråkhytta",   to: "Skogadalsbøen",    region: "Jotunheimen",    km: 12, ascent:  500, diff: 2 },
-  { day: 5,  from: "Skogadalsbøen",   to: "Fondsbu",          region: "Jotunheimen",    km: 25, ascent: 1059, diff: 4 },
-  { day: 6,  from: "Fondsbu",         to: "Slettningsbu",     region: "Jotunheimen",    km: 24, ascent:  756, diff: 3 },
-  { day: 7,  from: "Slettningsbu",    to: "Sulebu",           region: "Jotunheimen",    km: 19, ascent:  754, diff: 3 },
-  { day: 8,  from: "Sulebu",          to: "Skarvheim",        region: "Skarvheimen",    km: 21, ascent:  832, diff: 3 },
-  { day: 9,  from: "Skarvheim",       to: "Bjordalsbu",       region: "Skarvheimen",    km: 13, ascent:  785, diff: 3 },
-  { day: 10, from: "Bjordalsbu",      to: "Iungsdalshytta",   region: "Skarvheimen",    km: 17, ascent:  465, diff: 2 },
-  { day: 11, from: "Iungsdalshytta",  to: "Geiterygghytta",   region: "Skarvheimen",    km: 30, ascent:  993, diff: 5 },
-  { day: 12, from: "Geiterygghytta",  to: "Finsehytta",       region: "Skarvheimen",    km: 17, ascent:  685, diff: 3 },
-  { day: 13, from: "Finsehytta",      to: "Krækkja",          region: "Hardangervidda", km: 25, ascent:  797, diff: 3 },
-  { day: 14, from: "Krækkja",         to: "Stigstuv",         region: "Hardangervidda", km: 20, ascent:  700, diff: 2 },
-  { day: 15, from: "Stigstuv",        to: "Sandhaug",         region: "Hardangervidda", km: 24, ascent:  644, diff: 2 },
-  { day: 16, from: "Sandhaug",        to: "Litlos",           region: "Hardangervidda", km: 27, ascent:  661, diff: 3 },
-  { day: 17, from: "Litlos",          to: "Hellevassbu",      region: "Hardangervidda", km: 18, ascent:  552, diff: 1 },
-  { day: 18, from: "Hellevassbu",     to: "Haukeliseter",     region: "Hardangervidda", km: 23, ascent:  743, diff: 3 },
+  { day: 1,  from: "Sota Sæter",       to: "Nørdstedalseter",  region: "Breheimen",      km: 26, ascent: 1691, diff: 4, lat: 61.64232, lon: 7.79666 },
+  { day: 2,  from: "Nørdstedalseter",  to: "Sognefjellshytta", region: "Breheimen",      km: 26, ascent: 1838, diff: 5, lat: 61.54389, lon: 7.97259 },
+  { day: 3,  from: "Sognefjellshytta", to: "Fannaråkhytta",    region: "Jotunheimen",    km: 16, ascent:  895, diff: 4, lat: 61.45172, lon: 8.02802 },
+  { day: 4,  from: "Fannaråkhytta",    to: "Skogadalsbøen",    region: "Jotunheimen",    km: 12, ascent:  500, diff: 2, lat: 61.39587, lon: 8.15003 },
+  { day: 5,  from: "Skogadalsbøen",    to: "Fondsbu",          region: "Jotunheimen",    km: 25, ascent: 1059, diff: 4, lat: 61.29855, lon: 8.16489 },
+  { day: 6,  from: "Fondsbu",          to: "Slettningsbu",     region: "Jotunheimen",    km: 24, ascent:  756, diff: 3, lat: 61.15834, lon: 8.11952 },
+  { day: 7,  from: "Slettningsbu",     to: "Sulebu",           region: "Jotunheimen",    km: 19, ascent:  754, diff: 3, lat: 61.04906, lon: 8.10363 },
+  { day: 8,  from: "Sulebu",           to: "Skarvheim",        region: "Skarvheimen",    km: 21, ascent:  832, diff: 3, lat: 60.92133, lon: 7.99816 },
+  { day: 9,  from: "Skarvheim",        to: "Bjordalsbu",       region: "Skarvheimen",    km: 13, ascent:  785, diff: 3, lat: 60.82122, lon: 7.92338 },
+  { day: 10, from: "Bjordalsbu",       to: "Iungsdalshytta",   region: "Skarvheimen",    km: 17, ascent:  465, diff: 2, lat: 60.77777, lon: 7.69953 },
+  { day: 11, from: "Iungsdalshytta",   to: "Geiterygghytta",   region: "Skarvheimen",    km: 30, ascent:  993, diff: 5, lat: 60.58421, lon: 7.51875 },
+  { day: 12, from: "Geiterygghytta",   to: "Finsehytta",       region: "Skarvheimen",    km: 17, ascent:  685, diff: 3, lat: 60.48273, lon: 7.67776 },
+  { day: 13, from: "Finsehytta",       to: "Krækkja",          region: "Hardangervidda", km: 25, ascent:  797, diff: 3, lat: 60.29622, lon: 7.65044 },
+  { day: 14, from: "Krækkja",          to: "Stigstuv",         region: "Hardangervidda", km: 20, ascent:  700, diff: 2, lat: 60.17827, lon: 7.47458 },
+  { day: 15, from: "Stigstuv",         to: "Sandhaug",         region: "Hardangervidda", km: 24, ascent:  644, diff: 2, lat: 60.10117, lon: 7.14813 },
+  { day: 16, from: "Sandhaug",         to: "Litlos",           region: "Hardangervidda", km: 27, ascent:  661, diff: 3, lat: 59.92119, lon: 7.20840 },
+  { day: 17, from: "Litlos",           to: "Hellevassbu",      region: "Hardangervidda", km: 18, ascent:  552, diff: 1, lat: 59.83438, lon: 7.21119 },
+  { day: 18, from: "Hellevassbu",      to: "Haukeliseter",     region: "Hardangervidda", km: 23, ascent:  743, diff: 3, lat: 59.82377, lon: 7.19460 },
 ];
 
 const REGION_COLOR = {
@@ -117,6 +117,20 @@ const REGION_COLOR = {
   Skarvheimen:    "#7b3fa0",
   Hardangervidda: "#c07020",
 };
+
+function weatherEmoji(symbol) {
+  if (!symbol) return "–";
+  if (symbol.includes("clearsky"))     return "☀️";
+  if (symbol.includes("fair"))         return "🌤️";
+  if (symbol.includes("partlycloudy")) return "⛅";
+  if (symbol.includes("cloudy"))       return "☁️";
+  if (symbol.includes("fog"))          return "🌫️";
+  if (symbol.includes("thunder"))      return "⛈️";
+  if (symbol.includes("snow"))         return "❄️";
+  if (symbol.includes("sleet"))        return "🌨️";
+  if (symbol.includes("rain") || symbol.includes("shower")) return "🌧️";
+  return "🌡️";
+}
 
 function CountUp({ target, suffix = "", prefix = "" }) {
   const [count, setCount] = useState(0);
@@ -208,6 +222,42 @@ function diffDots(n) {
 }
 
 function Stages() {
+  const [weather, setWeather] = useState({});
+
+  useEffect(() => {
+    const hikeStart = config.hikeStartDate
+      ? new Date(config.hikeStartDate + "T00:00:00Z")
+      : new Date();
+    const today = new Date();
+    today.setUTCHours(0, 0, 0, 0);
+
+    const toFetch = STAGES.filter((s) => {
+      const d = new Date(hikeStart);
+      d.setUTCDate(d.getUTCDate() + s.day - 1);
+      const diff = (d - today) / 86400000;
+      return diff >= 0 && diff < 9;
+    });
+
+    if (toFetch.length === 0) return;
+
+    Promise.all(
+      toFetch.map(async (s) => {
+        const d = new Date(hikeStart);
+        d.setUTCDate(d.getUTCDate() + s.day - 1);
+        const dateStr = d.toISOString().split("T")[0];
+        try {
+          const res = await fetch(`/api/weather?lat=${s.lat}&lon=${s.lon}&date=${dateStr}`);
+          const data = await res.json();
+          if (data.available) return [s.day, data];
+        } catch {}
+        return null;
+      })
+    ).then((results) => {
+      const entries = results.filter(Boolean);
+      if (entries.length > 0) setWeather(Object.fromEntries(entries));
+    });
+  }, []);
+
   return (
     <section id="stages">
       <h2 className="section-title">
@@ -225,6 +275,7 @@ function Stages() {
               <th>km</th>
               <th>Ascent</th>
               <th>Difficulty</th>
+              <th>Weather</th>
             </tr>
           </thead>
           <tbody>
@@ -240,6 +291,11 @@ function Stages() {
                 <td className="st-num">{s.km}</td>
                 <td className="st-num">{s.ascent.toLocaleString()} m</td>
                 <td className="st-diff">{diffDots(s.diff)}</td>
+                <td className="st-weather">
+                  {weather[s.day]
+                    ? <span>{weatherEmoji(weather[s.day].symbol)} {weather[s.day].max}°/{weather[s.day].min}°</span>
+                    : <span className="st-weather-na">–</span>}
+                </td>
               </tr>
             ))}
           </tbody>
