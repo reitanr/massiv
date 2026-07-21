@@ -340,7 +340,26 @@ function Preparations() {
         <h3>Gear</h3>
         <p>Coming.</p>
         <h3>Planning</h3>
-        <p>Coming.</p>
+        <p>
+          The journey starts in Oslo on 1–2 August. On Sunday morning I take the train
+          from Oslo to Otta, then a bus onward to Bismo, and finally a pre-booked
+          taxi/minibus from Bismo up to Sota Sæter in the afternoon — the official
+          starting point of the route.
+        </p>
+        <p>
+          Along the way I have booked two nights at staffed huts: Sognefjellshytta (day 2)
+          and Fannaråkhytta (day 3). I have also hired a glacier guide for the crossing
+          of Fannarådbrean on the approach to Fannaråkhytta.
+        </p>
+        <p>
+          Beyond that, accommodation is unplanned. The split between huts and tent camping
+          will depend largely on weather and how I feel each day — one of the perks of
+          carrying a tent.
+        </p>
+        <p>
+          For the return, the plan is to catch a bus from Haukeliseter to Oslo once I
+          arrive at the finish, and drive home from there.
+        </p>
       </div>
     </section>
   );
