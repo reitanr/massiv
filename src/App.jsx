@@ -111,6 +111,15 @@ const STAGES = [
   { day: 18, from: "Hellevassbu",      to: "Haukeliseter",     region: "Hardangervidda", km: 23, ascent:  743, diff: 3, lat: 59.82377, lon: 7.19460, winter: true, winterDate: "2026-03-25" },
 ];
 
+// Faktisk vindstyrke fra Hardangervidda-skituren (Robert's egne data, m/s)
+const WINTER_WIND = {
+  "2026-03-21": 12,
+  "2026-03-22": 16,
+  "2026-03-23": 19,
+  "2026-03-24": 24,
+  "2026-03-25": 18,
+};
+
 const REGION_COLOR = {
   Breheimen:      "#2a7d1e",
   Jotunheimen:    "#1a6fc4",
@@ -332,7 +341,7 @@ function Stages() {
                         ? (() => {
                             const w = histWeather?.[s.winterDate];
                             return w
-                              ? <span>{wmoEmoji(w.code)} {w.max}°/{w.min}° <span className="st-weather-wind">{w.wind} m/s</span></span>
+                              ? <span>{wmoEmoji(w.code)} {w.max}°/{w.min}° <span className="st-weather-wind">{WINTER_WIND[s.winterDate]} m/s</span></span>
                               : <span className="st-weather-na">–</span>;
                           })()
                         : weather[s.day]
