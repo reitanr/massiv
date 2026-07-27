@@ -332,7 +332,7 @@ function Stages() {
                         ? (() => {
                             const w = histWeather?.[s.winterDate];
                             return w
-                              ? <span>{wmoEmoji(w.code)} {w.max}°/{w.min}° <span className="st-weather-wind">{w.wind} km/h</span></span>
+                              ? <span>{wmoEmoji(w.code)} {w.max}°/{w.min}° <span className="st-weather-wind">{w.wind} m/s</span></span>
                               : <span className="st-weather-na">–</span>;
                           })()
                         : weather[s.day]

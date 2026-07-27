@@ -13,7 +13,8 @@ export default async function handler(req, res) {
       "?latitude=60.2&longitude=7.5" +
       `&start_date=${START}&end_date=${END}` +
       "&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max" +
-      "&timezone=Europe%2FOslo";
+      "&timezone=Europe%2FOslo" +
+      "&wind_speed_unit=ms";
 
     const r = await fetch(url, {
       headers: {
