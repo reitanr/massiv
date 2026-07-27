@@ -551,6 +551,7 @@ body {
 }
 .st-weather { white-space: nowrap; font-size: 0.88rem; }
 .st-weather-na { color: var(--stone-line); }
+.st-weather-wind { color: var(--ink-soft); font-size: 0.78rem; margin-left: 2px; }
 .st-row-winter td { color: var(--ink-soft); background: #f5f7fa; }
 .st-row-winter .st-region { opacity: 0.6; }
 .st-winter-icon { color: #1a6fc4; font-size: 1rem; }

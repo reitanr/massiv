@@ -103,12 +103,12 @@ const STAGES = [
   { day: 10, from: "Bjordalsbu",       to: "Iungsdalshytta",   region: "Skarvheimen",    km: 17, ascent:  465, diff: 2, lat: 60.77777, lon: 7.69953 },
   { day: 11, from: "Iungsdalshytta",   to: "Geiterygghytta",   region: "Skarvheimen",    km: 30, ascent:  993, diff: 5, lat: 60.58421, lon: 7.51875 },
   { day: 12, from: "Geiterygghytta",   to: "Finsehytta",       region: "Skarvheimen",    km: 17, ascent:  685, diff: 3, lat: 60.48273, lon: 7.67776 },
-  { day: 13, from: "Finsehytta",       to: "Krækkja",          region: "Hardangervidda", km: 25, ascent:  797, diff: 3, lat: 60.29622, lon: 7.65044, winter: true },
-  { day: 14, from: "Krækkja",          to: "Stigstuv",         region: "Hardangervidda", km: 20, ascent:  700, diff: 2, lat: 60.17827, lon: 7.47458, winter: true },
-  { day: 15, from: "Stigstuv",         to: "Sandhaug",         region: "Hardangervidda", km: 24, ascent:  644, diff: 2, lat: 60.10117, lon: 7.14813, winter: true },
-  { day: 16, from: "Sandhaug",         to: "Litlos",           region: "Hardangervidda", km: 27, ascent:  661, diff: 3, lat: 59.92119, lon: 7.20840, winter: true },
-  { day: 17, from: "Litlos",           to: "Hellevassbu",      region: "Hardangervidda", km: 18, ascent:  552, diff: 1, lat: 59.83438, lon: 7.21119, winter: true },
-  { day: 18, from: "Hellevassbu",      to: "Haukeliseter",     region: "Hardangervidda", km: 23, ascent:  743, diff: 3, lat: 59.82377, lon: 7.19460, winter: true },
+  { day: 13, from: "Finsehytta",       to: "Krækkja",          region: "Hardangervidda", km: 25, ascent:  797, diff: 3, lat: 60.29622, lon: 7.65044, winter: true, winterDate: "2026-03-21" },
+  { day: 14, from: "Krækkja",          to: "Stigstuv",         region: "Hardangervidda", km: 20, ascent:  700, diff: 2, lat: 60.17827, lon: 7.47458, winter: true, winterDate: "2026-03-22" },
+  { day: 15, from: "Stigstuv",         to: "Sandhaug",         region: "Hardangervidda", km: 24, ascent:  644, diff: 2, lat: 60.10117, lon: 7.14813, winter: true, winterDate: "2026-03-23" },
+  { day: 16, from: "Sandhaug",         to: "Litlos",           region: "Hardangervidda", km: 27, ascent:  661, diff: 3, lat: 59.92119, lon: 7.20840, winter: true, winterDate: "2026-03-24" },
+  { day: 17, from: "Litlos",           to: "Hellevassbu",      region: "Hardangervidda", km: 18, ascent:  552, diff: 1, lat: 59.83438, lon: 7.21119, winter: true, winterDate: "2026-03-25" },
+  { day: 18, from: "Hellevassbu",      to: "Haukeliseter",     region: "Hardangervidda", km: 23, ascent:  743, diff: 3, lat: 59.82377, lon: 7.19460, winter: true, winterDate: "2026-03-25" },
 ];
 
 const REGION_COLOR = {
@@ -129,6 +129,22 @@ function weatherEmoji(symbol) {
   if (symbol.includes("snow"))         return "❄️";
   if (symbol.includes("sleet"))        return "🌨️";
   if (symbol.includes("rain") || symbol.includes("shower")) return "🌧️";
+  return "🌡️";
+}
+
+// WMO weather code → emoji (Open-Meteo archive)
+function wmoEmoji(code) {
+  if (code === 0)                   return "☀️";
+  if (code === 1)                   return "🌤️";
+  if (code === 2)                   return "⛅";
+  if (code === 3)                   return "☁️";
+  if (code === 45 || code === 48)   return "🌫️";
+  if (code >= 51 && code <= 57)     return "🌧️";
+  if (code >= 61 && code <= 67)     return "🌧️";
+  if (code >= 71 && code <= 77)     return "❄️";
+  if (code >= 80 && code <= 82)     return "🌧️";
+  if (code >= 85 && code <= 86)     return "🌨️";
+  if (code >= 95)                   return "⛈️";
   return "🌡️";
 }
 
@@ -223,6 +239,15 @@ function diffDots(n) {
 
 function Stages() {
   const [weather, setWeather] = useState({});
+  const [histWeather, setHistWeather] = useState(null);
+
+  // Hent historisk vær for vinteretappene
+  useEffect(() => {
+    fetch("/api/historical-weather")
+      .then((r) => r.json())
+      .then((data) => { if (data.available) setHistWeather(data.byDate); })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     const hikeStart = config.hikeStartDate
@@ -304,7 +329,12 @@ function Stages() {
                     </td>
                     <td className="st-weather">
                       {s.winter
-                        ? <span className="st-weather-na">–</span>
+                        ? (() => {
+                            const w = histWeather?.[s.winterDate];
+                            return w
+                              ? <span>{wmoEmoji(w.code)} {w.max}°/{w.min}° <span className="st-weather-wind">{w.wind} km/h</span></span>
+                              : <span className="st-weather-na">–</span>;
+                          })()
                         : weather[s.day]
                           ? <span>{weatherEmoji(weather[s.day].symbol)} {weather[s.day].max}°/{weather[s.day].min}°</span>
                           : <span className="st-weather-na">–</span>}
