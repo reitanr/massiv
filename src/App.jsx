@@ -343,8 +343,8 @@ function Preparations() {
           in Northern Europe — was completed on skis in winter conditions between
           21 and 25 March 2026, with DNT's approval counting it toward the full
           Massiv stamp collection. This summer, the remaining 12 stages from
-          Sota Sæter to Finsehytta will complete the route, with nights split
-          between DNT mountain huts and tent camping.
+          Sota Sæter to Finsehytta will complete the route, with all nights
+          at DNT mountain huts and a light pack.
         </p>
 
         <div className="prep-stats">
@@ -354,7 +354,7 @@ function Preparations() {
           <div><span className="stat-label">Highest point</span><span className="stat-value">Fannaråken 2,068 m</span></div>
           <div><span className="stat-label">Season</span><span className="stat-value">July – August</span></div>
           <div><span className="stat-label">Difficulty</span><span className="stat-value">Strenuous</span></div>
-          <div><span className="stat-label">Accommodation</span><span className="stat-value">Huts &amp; tent</span></div>
+          <div><span className="stat-label">Accommodation</span><span className="stat-value">DNT huts</span></div>
           <div><span className="stat-label">Mountain regions</span><span className="stat-value">4</span></div>
         </div>
 
@@ -373,9 +373,8 @@ function Preparations() {
           of Fannarådbrean on the approach to Fannaråkhytta.
         </p>
         <p>
-          Beyond that, accommodation is unplanned. The split between huts and tent camping
-          will depend largely on weather and how I feel each day — one of the perks of
-          carrying a tent.
+          Beyond the two pre-booked nights, accommodation is unplanned. I will be
+          travelling light with no tent, staying at DNT mountain huts every night.
         </p>
         <p>
           For the return, the plan is to catch a bus from Haukeliseter to Oslo once I
