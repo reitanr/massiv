@@ -551,6 +551,19 @@ body {
 }
 .st-weather { white-space: nowrap; font-size: 0.88rem; }
 .st-weather-na { color: var(--stone-line); }
+.st-row-winter td { color: var(--ink-soft); background: #f5f7fa; }
+.st-row-winter .st-region { opacity: 0.6; }
+.st-winter-icon { color: #1a6fc4; font-size: 1rem; }
+.st-section-divider td {
+  background: #e8f0f8;
+  color: #1a6fc4;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 8px 14px;
+  border-top: 2px solid #b8d0e8;
+}
 
 /* ── Gjestebok ───────────────────────────────────────────── */
 .gb-form {

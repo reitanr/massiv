@@ -103,12 +103,12 @@ const STAGES = [
   { day: 10, from: "Bjordalsbu",       to: "Iungsdalshytta",   region: "Skarvheimen",    km: 17, ascent:  465, diff: 2, lat: 60.77777, lon: 7.69953 },
   { day: 11, from: "Iungsdalshytta",   to: "Geiterygghytta",   region: "Skarvheimen",    km: 30, ascent:  993, diff: 5, lat: 60.58421, lon: 7.51875 },
   { day: 12, from: "Geiterygghytta",   to: "Finsehytta",       region: "Skarvheimen",    km: 17, ascent:  685, diff: 3, lat: 60.48273, lon: 7.67776 },
-  { day: 13, from: "Finsehytta",       to: "Krækkja",          region: "Hardangervidda", km: 25, ascent:  797, diff: 3, lat: 60.29622, lon: 7.65044 },
-  { day: 14, from: "Krækkja",          to: "Stigstuv",         region: "Hardangervidda", km: 20, ascent:  700, diff: 2, lat: 60.17827, lon: 7.47458 },
-  { day: 15, from: "Stigstuv",         to: "Sandhaug",         region: "Hardangervidda", km: 24, ascent:  644, diff: 2, lat: 60.10117, lon: 7.14813 },
-  { day: 16, from: "Sandhaug",         to: "Litlos",           region: "Hardangervidda", km: 27, ascent:  661, diff: 3, lat: 59.92119, lon: 7.20840 },
-  { day: 17, from: "Litlos",           to: "Hellevassbu",      region: "Hardangervidda", km: 18, ascent:  552, diff: 1, lat: 59.83438, lon: 7.21119 },
-  { day: 18, from: "Hellevassbu",      to: "Haukeliseter",     region: "Hardangervidda", km: 23, ascent:  743, diff: 3, lat: 59.82377, lon: 7.19460 },
+  { day: 13, from: "Finsehytta",       to: "Krækkja",          region: "Hardangervidda", km: 25, ascent:  797, diff: 3, lat: 60.29622, lon: 7.65044, winter: true },
+  { day: 14, from: "Krækkja",          to: "Stigstuv",         region: "Hardangervidda", km: 20, ascent:  700, diff: 2, lat: 60.17827, lon: 7.47458, winter: true },
+  { day: 15, from: "Stigstuv",         to: "Sandhaug",         region: "Hardangervidda", km: 24, ascent:  644, diff: 2, lat: 60.10117, lon: 7.14813, winter: true },
+  { day: 16, from: "Sandhaug",         to: "Litlos",           region: "Hardangervidda", km: 27, ascent:  661, diff: 3, lat: 59.92119, lon: 7.20840, winter: true },
+  { day: 17, from: "Litlos",           to: "Hellevassbu",      region: "Hardangervidda", km: 18, ascent:  552, diff: 1, lat: 59.83438, lon: 7.21119, winter: true },
+  { day: 18, from: "Hellevassbu",      to: "Haukeliseter",     region: "Hardangervidda", km: 23, ascent:  743, diff: 3, lat: 59.82377, lon: 7.19460, winter: true },
 ];
 
 const REGION_COLOR = {
@@ -232,6 +232,7 @@ function Stages() {
     today.setUTCHours(0, 0, 0, 0);
 
     const toFetch = STAGES.filter((s) => {
+      if (s.winter) return false;
       const d = new Date(hikeStart);
       d.setUTCDate(d.getUTCDate() + s.day - 1);
       const diff = (d - today) / 86400000;
@@ -279,25 +280,39 @@ function Stages() {
             </tr>
           </thead>
           <tbody>
-            {STAGES.map((s) => (
-              <tr key={s.day}>
-                <td className="st-day">{s.day}</td>
-                <td className="st-route">{s.from} → {s.to}</td>
-                <td>
-                  <span className="st-region" style={{ borderColor: REGION_COLOR[s.region], color: REGION_COLOR[s.region] }}>
-                    {s.region}
-                  </span>
-                </td>
-                <td className="st-num">{s.km}</td>
-                <td className="st-num">{s.ascent.toLocaleString()} m</td>
-                <td className="st-diff">{diffDots(s.diff)}</td>
-                <td className="st-weather">
-                  {weather[s.day]
-                    ? <span>{weatherEmoji(weather[s.day].symbol)} {weather[s.day].max}°/{weather[s.day].min}°</span>
-                    : <span className="st-weather-na">–</span>}
-                </td>
-              </tr>
-            ))}
+            {STAGES.map((s) => {
+              const isFirstWinter = s.day === 13;
+              return (
+                <>
+                  {isFirstWinter && (
+                    <tr key="winter-divider" className="st-section-divider">
+                      <td colSpan={7}>❄ Hardangervidda — fullført til fots, 21–25 mars 2026</td>
+                    </tr>
+                  )}
+                  <tr key={s.day} className={s.winter ? "st-row-winter" : ""}>
+                    <td className="st-day">{s.day}</td>
+                    <td className="st-route">{s.from} → {s.to}</td>
+                    <td>
+                      <span className="st-region" style={{ borderColor: REGION_COLOR[s.region], color: REGION_COLOR[s.region] }}>
+                        {s.region}
+                      </span>
+                    </td>
+                    <td className="st-num">{s.km}</td>
+                    <td className="st-num">{s.ascent.toLocaleString()} m</td>
+                    <td className="st-diff">
+                      {s.winter ? <span className="st-winter-icon">❄</span> : diffDots(s.diff)}
+                    </td>
+                    <td className="st-weather">
+                      {s.winter
+                        ? <span className="st-weather-na">–</span>
+                        : weather[s.day]
+                          ? <span>{weatherEmoji(weather[s.day].symbol)} {weather[s.day].max}°/{weather[s.day].min}°</span>
+                          : <span className="st-weather-na">–</span>}
+                    </td>
+                  </tr>
+                </>
+              );
+            })}
           </tbody>
         </table>
         <ElevationChart />
@@ -322,8 +337,14 @@ function Preparations() {
           crosses four of Norway's most spectacular mountain regions: Breheimen,
           Jotunheimen, Skarvheimen and Hardangervidda. Total elevation gain
           exceeds 15,000 metres, with the highest point at Fannaråken (2,068 m).
-          The trail is planned as 18 hiking days, with nights split between
-          DNT mountain huts and tent camping.
+        </p>
+        <p>
+          The Hardangervidda section — 97 km across the largest mountain plateau
+          in Northern Europe — was completed on foot in winter conditions between
+          21 and 25 March 2026, with DNT's approval counting it toward the full
+          Massiv stamp collection. This summer, the remaining 12 stages from
+          Sota Sæter to Finsehytta will complete the route, with nights split
+          between DNT mountain huts and tent camping.
         </p>
 
         <div className="prep-stats">
