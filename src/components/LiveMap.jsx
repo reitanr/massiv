@@ -59,14 +59,14 @@ const HUTS = [
   { name: "Bjordalsbu",       dag: "Dag 9",  region: "Skarvheimen",    lat: 60.82122, lng: 7.92338 },
   { name: "Iungsdalshytta",   dag: "Dag 10", region: "Skarvheimen",    lat: 60.77777, lng: 7.69953 },
   { name: "Geiterygghytta",   dag: "Dag 11", region: "Skarvheimen",    lat: 60.58421, lng: 7.51875 },
-  { name: "Finsehytta",       dag: "Dag 12", region: "Hardangervidda", lat: 60.48273, lng: 7.67776 },
+  { name: "Finsehytta",       dag: "Mål",    region: "Hardangervidda", lat: 60.48273, lng: 7.67776 },
   // Hardangervidda
   { name: "Krækkja",          dag: "Dag 13", region: "Hardangervidda", lat: 60.29622, lng: 7.65044 },
   { name: "Stigstuv",         dag: "Dag 14", region: "Hardangervidda", lat: 60.17827, lng: 7.47458 },
   { name: "Sandhaug",         dag: "Dag 15", region: "Hardangervidda", lat: 60.10117, lng: 7.14813 },
   { name: "Litlos",           dag: "Dag 16", region: "Hardangervidda", lat: 59.92119, lng: 7.20840 },
   { name: "Hellevassbu",      dag: "Dag 17", region: "Hardangervidda", lat: 59.83438, lng: 7.21119 },
-  { name: "Haukeliseter",     dag: "Mål",    region: "Hardangervidda", lat: 59.82377, lng: 7.19460 },
+  { name: "Haukeliseter",     dag: "Vintermål", region: "Hardangervidda", lat: 59.82377, lng: 7.19460 },
 ];
 
 /* ── Komponent ──────────────────────────────────────────────── */
@@ -120,10 +120,11 @@ export default function LiveMap() {
 
           // ── Hyttemarkører (DNT-etapper) ─────────────────────
           HUTS.forEach((hut) => {
-            const isStart = hut.dag === "Start";
-            const isEnd   = hut.dag === "Mål";
-            const bg = isStart ? "#2a7d1e" : isEnd ? "#c0392b" : "#fff";
-            const border = isStart || isEnd ? "none" : "2.5px solid #1a4f8a";
+            const isStart      = hut.dag === "Start";
+            const isEnd        = hut.dag === "Mål";
+            const isWinterEnd  = hut.dag === "Vintermål";
+            const bg = isStart ? "#2a7d1e" : isEnd ? "#c0392b" : isWinterEnd ? "#1a6fc4" : "#fff";
+            const border = isStart || isEnd || isWinterEnd ? "none" : "2.5px solid #1a4f8a";
             const icon = L.divIcon({
               className: "",
               html: `<div style="
@@ -139,7 +140,7 @@ export default function LiveMap() {
             L.marker([hut.lat, hut.lng], { icon })
               .addTo(map)
               .bindPopup(
-                `<b>${hut.dag}: ${hut.name}</b><br><span style="color:#666;font-size:0.85em">${hut.region}</span>`
+                `<b>${hut.dag === "Vintermål" ? "Vintermål" : hut.dag}: ${hut.name}</b><br><span style="color:#666;font-size:0.85em">${hut.dag === "Vintermål" ? "Fullført på ski, mars 2026" : hut.region}</span>`
               );
           });
         }

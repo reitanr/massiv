@@ -286,7 +286,7 @@ function Stages() {
                 <>
                   {isFirstWinter && (
                     <tr key="winter-divider" className="st-section-divider">
-                      <td colSpan={7}>❄ Hardangervidda — fullført til fots, 21–25 mars 2026</td>
+                      <td colSpan={7}>❄ Hardangervidda — fullført på ski, 21–25 mars 2026</td>
                     </tr>
                   )}
                   <tr key={s.day} className={s.winter ? "st-row-winter" : ""}>
@@ -340,7 +340,7 @@ function Preparations() {
         </p>
         <p>
           The Hardangervidda section — 97 km across the largest mountain plateau
-          in Northern Europe — was completed on foot in winter conditions between
+          in Northern Europe — was completed on skis in winter conditions between
           21 and 25 March 2026, with DNT's approval counting it toward the full
           Massiv stamp collection. This summer, the remaining 12 stages from
           Sota Sæter to Finsehytta will complete the route, with nights split
