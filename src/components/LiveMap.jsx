@@ -108,13 +108,28 @@ export default function LiveMap() {
         if (!cancelled && gpxRes.ok) {
           const routePts = parseGPX(await gpxRes.text());
           if (routePts.length > 1) {
-            const line = L.polyline(routePts, {
-              color: "#1a6fc4",
-              weight: 5,
-              opacity: 0.9,
-              lineJoin: "round",
+            // Del ruten ved Finsehytta (grense sommer/vinter)
+            const FINSE = [60.48273, 7.67776];
+            let splitIdx = 0;
+            let minDist = Infinity;
+            routePts.forEach(([lat, lng], i) => {
+              const d = Math.hypot(lat - FINSE[0], lng - FINSE[1]);
+              if (d < minDist) { minDist = d; splitIdx = i; }
+            });
+
+            const summerPts = routePts.slice(0, splitIdx + 1);
+            const winterPts = routePts.slice(splitIdx);
+
+            const summerLine = L.polyline(summerPts, {
+              color: "#1a6fc4", weight: 5, opacity: 0.9, lineJoin: "round",
             }).addTo(map);
-            routeBounds = line.getBounds();
+
+            L.polyline(winterPts, {
+              color: "#1a6fc4", weight: 4, opacity: 0.5,
+              dashArray: "10, 8", lineJoin: "round",
+            }).addTo(map);
+
+            routeBounds = summerLine.getBounds().extend(winterPts[winterPts.length - 1]);
             if (!cancelled) setHasRoute(true);
           }
 
@@ -222,7 +237,11 @@ export default function LiveMap() {
       <div className="map-legend">
         <span className="legend-item">
           <span className="legend-line" style={{ background: "#1a6fc4" }} />
-          Planned route
+          Summer route (planned)
+        </span>
+        <span className="legend-item">
+          <span className="legend-line" style={{ background: "#1a6fc4", opacity: 0.5, backgroundImage: "repeating-linear-gradient(90deg,#1a6fc4 0,#1a6fc4 10px,transparent 10px,transparent 18px)" }} />
+          Winter route (completed on skis, March 2026)
         </span>
         <span className="legend-item">
           <span className="legend-line" style={{ background: "#e8005a" }} />
