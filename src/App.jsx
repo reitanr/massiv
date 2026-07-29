@@ -103,12 +103,12 @@ const STAGES = [
   { day: 10, from: "Bjordalsbu",       to: "Iungsdalshytta",   region: "Skarvheimen",    km: 17, ascent:  465, diff: 2, lat: 60.77777, lon: 7.69953 },
   { day: 11, from: "Iungsdalshytta",   to: "Geiterygghytta",   region: "Skarvheimen",    km: 30, ascent:  993, diff: 5, lat: 60.58421, lon: 7.51875 },
   { day: 12, from: "Geiterygghytta",   to: "Finsehytta",       region: "Skarvheimen",    km: 17, ascent:  685, diff: 3, lat: 60.48273, lon: 7.67776 },
-  { day: 13, from: "Finsehytta",       to: "Krækkja",          region: "Hardangervidda", km: 25, ascent:  797, diff: 3, lat: 60.29622, lon: 7.65044, winter: true, winterDate: "2026-03-21" },
+  { day: 13, from: "Finsehytta",       to: "Krækkja",          region: "Hardangervidda", km: 24, ascent:  797, diff: 3, lat: 60.29622, lon: 7.65044, winter: true, winterDate: "2026-03-21" },
   { day: 14, from: "Krækkja",          to: "Stigstuv",         region: "Hardangervidda", km: 20, ascent:  700, diff: 2, lat: 60.17827, lon: 7.47458, winter: true, winterDate: "2026-03-22" },
-  { day: 15, from: "Stigstuv",         to: "Sandhaug",         region: "Hardangervidda", km: 24, ascent:  644, diff: 2, lat: 60.10117, lon: 7.14813, winter: true, winterDate: "2026-03-23" },
-  { day: 16, from: "Sandhaug",         to: "Litlos",           region: "Hardangervidda", km: 27, ascent:  661, diff: 3, lat: 59.92119, lon: 7.20840, winter: true, winterDate: "2026-03-24" },
-  { day: 17, from: "Litlos",           to: "Hellevassbu",      region: "Hardangervidda", km: 18, ascent:  552, diff: 1, lat: 59.83438, lon: 7.21119, winter: true, winterDate: "2026-03-25" },
-  { day: 18, from: "Hellevassbu",      to: "Haukeliseter",     region: "Hardangervidda", km: 23, ascent:  743, diff: 3, lat: 59.82377, lon: 7.19460, winter: true, winterDate: "2026-03-25" },
+  { day: 15, from: "Stigstuv",         to: "Sandhaug",         region: "Hardangervidda", km: 20, ascent:  644, diff: 2, lat: 60.10117, lon: 7.14813, winter: true, winterDate: "2026-03-23" },
+  { day: 16, from: "Sandhaug",         to: "Litlos",           region: "Hardangervidda", km: 25, ascent:  661, diff: 3, lat: 59.92119, lon: 7.20840, winter: true, winterDate: "2026-03-24" },
+  { day: 17, from: "Litlos",           to: "Hellevassbu",      region: "Hardangervidda", km: 17, ascent:  552, diff: 1, lat: 59.83438, lon: 7.21119, winter: true, winterDate: "2026-03-25" },
+  { day: 18, from: "Hellevassbu",      to: "Haukeliseter",     region: "Hardangervidda", km: 22, ascent:  743, diff: 3, lat: 59.82377, lon: 7.19460, winter: true, winterDate: "2026-03-25" },
 ];
 
 // Faktisk vindstyrke fra Hardangervidda-skituren (Robert's egne data, m/s)
@@ -405,7 +405,7 @@ function Preparations() {
               Winter 2026 <span className="prep-tag prep-tag-done">Completed ✓</span>
             </div>
             <div className="prep-stats">
-              <div><span className="stat-label">Distance</span><span className="stat-value">137 km</span></div>
+              <div><span className="stat-label">Distance</span><span className="stat-value">122.8 km</span></div>
               <div><span className="stat-label">Duration</span><span className="stat-value">6 days</span></div>
               <div><span className="stat-label">Elevation gain</span><span className="stat-value">~4,100 m</span></div>
               <div><span className="stat-label">Dates</span><span className="stat-value">21–25 March 2026</span></div>
