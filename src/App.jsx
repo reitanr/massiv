@@ -378,7 +378,7 @@ function Preparations() {
           exceeds 15,000 metres, with the highest point at Fannaråken (2,068 m).
         </p>
         <p>
-          The Hardangervidda section — 97 km across the largest mountain plateau
+          The Hardangervidda section — 122.8 km across the largest mountain plateau
           in Northern Europe — was completed on skis in winter conditions between
           21 and 25 March 2026, with DNT's approval counting it toward the full
           Massiv stamp collection. This summer, the remaining 12 stages from
