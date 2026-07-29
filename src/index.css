@@ -444,6 +444,39 @@ body {
   color: var(--ink-soft);
 }
 
+/* ── Gear grid ───────────────────────────────────────────── */
+.gear-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 12px;
+  margin: 12px 0 8px;
+}
+.gear-category {
+  background: var(--stone);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.gear-cat-title {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--ink-soft);
+  font-weight: 700;
+  margin-bottom: 7px;
+}
+.gear-category ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.gear-category li {
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+
 /* ── Stages ──────────────────────────────────────────────── */
 .stages-wrap {
   overflow-x: auto;

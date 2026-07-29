@@ -416,7 +416,123 @@ function Preparations() {
         </div>
 
         <h3>Gear</h3>
-        <p>Coming.</p>
+        <div className="gear-grid">
+          <div className="gear-category">
+            <div className="gear-cat-title">Bag</div>
+            <ul>
+              <li>Osprey Talon 44</li>
+            </ul>
+          </div>
+          <div className="gear-category">
+            <div className="gear-cat-title">Sleep / Shelter</div>
+            <ul>
+              <li>Jerven bag (emergency shelter)</li>
+              <li>Silk liner</li>
+            </ul>
+          </div>
+          <div className="gear-category">
+            <div className="gear-cat-title">Clothing</div>
+            <ul>
+              <li>Spare t-shirt</li>
+              <li>Long-sleeve merino shirt</li>
+              <li>Thick wool sweater</li>
+              <li>Wool neck gaiter</li>
+              <li>Spare underwear</li>
+              <li>Wool base layer pants</li>
+              <li>Spare shorts</li>
+              <li>Hiking pants</li>
+              <li>Wind jacket</li>
+              <li>Main jacket (rain/wind shell)</li>
+              <li>Puffy jacket</li>
+              <li>Rain pants</li>
+              <li>Wool hat</li>
+              <li>Two-layer gloves</li>
+              <li>Spare wool socks</li>
+            </ul>
+          </div>
+          <div className="gear-category">
+            <div className="gear-cat-title">Footwear</div>
+            <ul>
+              <li>Spare trail shoes (Salomon)</li>
+            </ul>
+          </div>
+          <div className="gear-category">
+            <div className="gear-cat-title">Kitchen</div>
+            <ul>
+              <li>Pocket knife</li>
+            </ul>
+          </div>
+          <div className="gear-category">
+            <div className="gear-cat-title">Food (emergency rations)</div>
+            <ul>
+              <li>Flatbread (lefser)</li>
+              <li>Chocolate</li>
+              <li>Tube cheese</li>
+              <li>Crispbread</li>
+            </ul>
+          </div>
+          <div className="gear-category">
+            <div className="gear-cat-title">Navigation</div>
+            <ul>
+              <li>DNT key</li>
+              <li>Massiv card</li>
+            </ul>
+          </div>
+          <div className="gear-category">
+            <div className="gear-cat-title">Electronics</div>
+            <ul>
+              <li>Power bank</li>
+              <li>Charging cables</li>
+              <li>Earphones</li>
+              <li>Headlamp</li>
+              <li>Garmin inReach</li>
+            </ul>
+          </div>
+          <div className="gear-category">
+            <div className="gear-cat-title">Safety / First Aid</div>
+            <ul>
+              <li>First aid kit</li>
+              <li>Wound ointment</li>
+              <li>Sports tape</li>
+              <li>Paracetamol</li>
+              <li>Individual dressing (trauma pack)</li>
+              <li>Sleep aid kit</li>
+            </ul>
+          </div>
+          <div className="gear-category">
+            <div className="gear-cat-title">Sun &amp; Insect Protection</div>
+            <ul>
+              <li>Sunscreen</li>
+              <li>Insect repellent</li>
+              <li>Head net</li>
+            </ul>
+          </div>
+          <div className="gear-category">
+            <div className="gear-cat-title">Hygiene</div>
+            <ul>
+              <li>Towel</li>
+              <li>Toiletry bag (toothbrush, toothpaste)</li>
+              <li>Wet wipes</li>
+              <li>Toilet paper</li>
+              <li>Liquid soap</li>
+              <li>Nail scissors</li>
+              <li>Deodorant</li>
+            </ul>
+          </div>
+          <div className="gear-category">
+            <div className="gear-cat-title">Hydration</div>
+            <ul>
+              <li>Water bottle (empty)</li>
+              <li>Cup</li>
+            </ul>
+          </div>
+          <div className="gear-category">
+            <div className="gear-cat-title">Miscellaneous</div>
+            <ul>
+              <li>Payment card</li>
+            </ul>
+          </div>
+        </div>
         <h3>Planning</h3>
         <p>
           The journey starts in Oslo on 1–2 August. On Sunday morning I take the train
