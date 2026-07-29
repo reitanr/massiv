@@ -444,7 +444,15 @@ body {
   color: var(--ink-soft);
 }
 
-/* ── Gear grid ───────────────────────────────────────────── */
+/* ── Gear ────────────────────────────────────────────────── */
+.gear-photo {
+  width: 100%;
+  max-width: 560px;
+  border-radius: 8px;
+  display: block;
+  margin: 12px 0 20px;
+}
+
 .gear-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));

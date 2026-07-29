@@ -416,6 +416,7 @@ function Preparations() {
         </div>
 
         <h3>Gear</h3>
+        <img src="/gear.jpg" alt="All gear laid out before the hike" className="gear-photo" />
         <div className="gear-grid">
           <div className="gear-category">
             <div className="gear-cat-title">Bag</div>
