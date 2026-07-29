@@ -386,15 +386,33 @@ function Preparations() {
           at DNT mountain huts and a light pack.
         </p>
 
-        <div className="prep-stats">
-          <div><span className="stat-label">Distance</span><span className="stat-value"><CountUp target={341} suffix=" km" /></span></div>
-          <div><span className="stat-label">Duration</span><span className="stat-value"><CountUp target={18} suffix=" days" /></span></div>
-          <div><span className="stat-label">Elevation gain</span><span className="stat-value"><CountUp target={15350} prefix="~" suffix=" m" /></span></div>
-          <div><span className="stat-label">Highest point</span><span className="stat-value">Fannaråken 2,068 m</span></div>
-          <div><span className="stat-label">Season</span><span className="stat-value">July – August</span></div>
-          <div><span className="stat-label">Difficulty</span><span className="stat-value">Strenuous</span></div>
-          <div><span className="stat-label">Accommodation</span><span className="stat-value">DNT huts</span></div>
-          <div><span className="stat-label">Mountain regions</span><span className="stat-value">4</span></div>
+        <div className="prep-stats-split">
+          <div className="prep-stats-group">
+            <div className="prep-stats-group-title">
+              Summer 2026 <span className="prep-tag prep-tag-upcoming">Upcoming</span>
+            </div>
+            <div className="prep-stats">
+              <div><span className="stat-label">Distance</span><span className="stat-value"><CountUp target={246} suffix=" km" /></span></div>
+              <div><span className="stat-label">Duration</span><span className="stat-value"><CountUp target={12} suffix=" days" /></span></div>
+              <div><span className="stat-label">Elevation gain</span><span className="stat-value"><CountUp target={11253} prefix="~" suffix=" m" /></span></div>
+              <div><span className="stat-label">Highest point</span><span className="stat-value">Fannaråken 2,068 m</span></div>
+              <div><span className="stat-label">Start</span><span className="stat-value">2 August 2026</span></div>
+              <div><span className="stat-label">Accommodation</span><span className="stat-value">DNT huts</span></div>
+            </div>
+          </div>
+          <div className="prep-stats-group">
+            <div className="prep-stats-group-title">
+              Winter 2026 <span className="prep-tag prep-tag-done">Completed ✓</span>
+            </div>
+            <div className="prep-stats">
+              <div><span className="stat-label">Distance</span><span className="stat-value">137 km</span></div>
+              <div><span className="stat-label">Duration</span><span className="stat-value">6 days</span></div>
+              <div><span className="stat-label">Elevation gain</span><span className="stat-value">~4,100 m</span></div>
+              <div><span className="stat-label">Dates</span><span className="stat-value">21–25 March 2026</span></div>
+              <div><span className="stat-label">Style</span><span className="stat-value">Ski touring</span></div>
+              <div><span className="stat-label">Accommodation</span><span className="stat-value">DNT huts</span></div>
+            </div>
+          </div>
         </div>
 
         <h3>Gear</h3>
