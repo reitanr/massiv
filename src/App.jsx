@@ -4,19 +4,19 @@ import LiveMap from "./components/LiveMap.jsx";
 import PostsFeed from "./components/PostsFeed.jsx";
 import Gallery from "./components/Gallery.jsx";
 import NewPost from "./components/NewPost.jsx";
+import PreviousTripsPage from "./components/PreviousTripsPage.jsx";
 
 export default function App() {
-  const [isAdmin, setIsAdmin] = useState(
-    () => window.location.hash === "#ny-post"
-  );
+  const [page, setPage] = useState(() => window.location.hash);
 
   useEffect(() => {
-    const handler = () => setIsAdmin(window.location.hash === "#ny-post");
+    const handler = () => setPage(window.location.hash);
     window.addEventListener("hashchange", handler);
     return () => window.removeEventListener("hashchange", handler);
   }, []);
 
-  if (isAdmin) return <NewPost />;
+  if (page === "#ny-post") return <NewPost />;
+  if (page === "#tidligere-turer") return <PreviousTripsPage />;
 
   return (
     <>

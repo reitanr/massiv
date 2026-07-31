@@ -855,6 +855,81 @@ body {
   gap: 12px;
 }
 
+/* ── Previous trips page ─────────────────────────────────── */
+.prev-trips-page { padding-top: 80px; min-height: 100vh; }
+.prev-trips-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--pine);
+  margin: 32px 0 24px;
+}
+.prev-trips-back {
+  color: var(--text-on-dark);
+  font-size: 0.9rem;
+  text-decoration: none;
+  opacity: 0.8;
+}
+.prev-trips-back:hover { opacity: 1; }
+.prev-trips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-bottom: 60px;
+}
+.prev-trips-thumb {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+.prev-trips-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.2s;
+}
+.prev-trips-thumb:hover img { transform: scale(1.04); }
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lb-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 4px;
+}
+.lb-close {
+  position: fixed;
+  top: 20px; right: 24px;
+  background: none; border: none;
+  color: #fff; font-size: 1.6rem;
+  cursor: pointer; opacity: 0.8;
+}
+.lb-close:hover { opacity: 1; }
+.lb-prev, .lb-next {
+  position: fixed;
+  top: 50%; transform: translateY(-50%);
+  background: none; border: none;
+  color: #fff; font-size: 3rem;
+  cursor: pointer; opacity: 0.7;
+  padding: 0 16px;
+}
+.lb-prev { left: 8px; }
+.lb-next { right: 8px; }
+.lb-prev:hover, .lb-next:hover { opacity: 1; }
+
 /* ── Hjelpeklasser ───────────────────────────────────────── */
 .muted { color: var(--ink-soft); font-size: 0.93rem; }
 code {
