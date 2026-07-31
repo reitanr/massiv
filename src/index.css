@@ -930,6 +930,31 @@ body {
 .lb-next { right: 8px; }
 .lb-prev:hover, .lb-next:hover { opacity: 1; }
 
+/* ── Galleri-snarvei og innlegg-link ─────────────────────── */
+.galleri-snarvei {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 12px 20px;
+  background: var(--stone);
+  border: 1.5px solid var(--stone-line);
+  border-radius: 8px;
+  color: var(--pine);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.galleri-snarvei:hover { background: var(--stone-line); }
+.alle-link {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--pine);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid var(--pine);
+  padding-bottom: 1px;
+}
+.alle-link:hover { opacity: 0.7; }
+
 /* ── Hjelpeklasser ───────────────────────────────────────── */
 .muted { color: var(--ink-soft); font-size: 0.93rem; }
 code {

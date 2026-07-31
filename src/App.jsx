@@ -5,6 +5,8 @@ import PostsFeed from "./components/PostsFeed.jsx";
 import Gallery from "./components/Gallery.jsx";
 import NewPost from "./components/NewPost.jsx";
 import PreviousTripsPage from "./components/PreviousTripsPage.jsx";
+import AllPostsPage from "./components/AllPostsPage.jsx";
+import GalleryPage from "./components/GalleryPage.jsx";
 
 export default function App() {
   const [page, setPage] = useState(() => window.location.hash);
@@ -17,6 +19,8 @@ export default function App() {
 
   if (page === "#ny-post") return <NewPost />;
   if (page === "#tidligere-turer") return <PreviousTripsPage />;
+  if (page === "#alle-innlegg") return <AllPostsPage />;
+  if (page === "#alle-bilder") return <GalleryPage />;
 
   return (
     <>
@@ -70,8 +74,8 @@ export default function App() {
       {/* Lyst innholdsområde */}
       <main className="content">
         <div className="container">
-          <PostsFeed />
-          <Gallery />
+          <PostsFeed preview={true} />
+          <GalleriSnarvei />
           <LiveMap />
           <Stages />
           <Preparations />
@@ -242,6 +246,20 @@ function diffDots(n) {
   return Array.from({ length: 5 }, (_, i) => (
     <span key={i} className="diff-dot" style={{ background: i < n ? color : "#ddd9d0" }} />
   ));
+}
+
+function GalleriSnarvei() {
+  return (
+    <section id="galleri">
+      <h2 className="section-title">
+        <span className="t-mark" aria-hidden="true" />
+        Galleri
+      </h2>
+      <a href="#alle-bilder" className="galleri-snarvei">
+        <span>Se alle bilder fra turen →</span>
+      </a>
+    </section>
+  );
 }
 
 function Stages() {

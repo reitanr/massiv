@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase, supabaseReady } from "../lib/supabase.js";
 
-export default function PostsFeed() {
+export default function PostsFeed({ preview = false }) {
   const [posts, setPosts] = useState([]);
   const [status, setStatus] = useState("laster");
 
@@ -10,17 +10,17 @@ export default function PostsFeed() {
       setStatus("mangler-nøkler");
       return;
     }
-    // Hent innlegg med tilhørende bilder fra post_media
-    supabase
+    let query = supabase
       .from("posts")
       .select("*, post_media(id, url, type, sort_order)")
-      .order("created_at", { ascending: false })
-      .then(({ data, error }) => {
+      .order("created_at", { ascending: false });
+    if (preview) query = query.limit(1);
+    query.then(({ data, error }) => {
         if (error) { setStatus("feil"); return; }
         setPosts(data || []);
         setStatus("klar");
       });
-  }, []);
+  }, [preview]);
 
   return (
     <section id="dagbok">
@@ -42,6 +42,7 @@ export default function PostsFeed() {
 
       <div className="posts">
         {posts.map((post) => {
+
           // Hent bilder sortert på sort_order, forkast ikke-bilde-media
           const images = (post.post_media || [])
             .filter((m) => m.type === "image")
@@ -88,6 +89,10 @@ export default function PostsFeed() {
           );
         })}
       </div>
+
+      {preview && posts.length > 0 && (
+        <a href="#alle-innlegg" className="alle-link">Se alle innlegg →</a>
+      )}
     </section>
   );
 }
