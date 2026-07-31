@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { supabase, supabaseReady } from "../lib/supabase.js";
 import { config } from "../config.js";
 
 export default function PreviousTripsPage() {
@@ -8,24 +7,13 @@ export default function PreviousTripsPage() {
   const [lightbox, setLightbox] = useState(null); // url of open photo
 
   useEffect(() => {
-    if (!supabaseReady) { setLoading(false); return; }
-    supabase.storage
-      .from("bilder")
-      .list("tidligere-turer", { sortBy: { column: "name", order: "asc" } })
-      .then(({ data, error }) => {
-        if (!error && data) {
-          const urls = data
-            .filter((f) => f.name && !f.name.startsWith("."))
-            .map((f) => {
-              const { data: urlData } = supabase.storage
-                .from("bilder")
-                .getPublicUrl(`tidligere-turer/${f.name}`);
-              return { name: f.name, url: urlData.publicUrl };
-            });
-          setPhotos(urls);
-        }
-        setLoading(false);
-      });
+    fetch("/api/list-photos?folder=tidligere-turer")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.urls) setPhotos(data.urls.map((url) => ({ url, name: url })));
+      })
+      .catch(() => {})
+      .finally(() => setLoading(false));
   }, []);
 
   // Close lightbox on Escape
