@@ -33,7 +33,7 @@ export default function App() {
             <li><a href="#kart">Map</a></li>
             <li><a href="#stages">Stages</a></li>
             <li><a href="#forberedelser">About</a></li>
-            <li><a href="#tidligere-turer">Previous trips</a></li>
+            <li><a href="#tidligere-turer">Photos</a></li>
           </ul>
         </div>
       </nav>

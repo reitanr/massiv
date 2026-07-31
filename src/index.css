@@ -944,7 +944,15 @@ code {
   body { font-size: 16px; }
   .hero { padding: 56px 20px 0; }
   .hero h1 { font-size: clamp(3.5rem, 20vw, 5rem); }
-  .nav-links { display: none; }
+  .nav-links {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
   .container { padding: 0 20px 60px; }
   .prep-content { padding: 20px; }
   .map-frame iframe { height: 380px; }
