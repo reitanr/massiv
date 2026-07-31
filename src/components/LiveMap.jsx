@@ -197,7 +197,7 @@ export default function LiveMap() {
             });
             L.marker(last, { icon: dot })
               .addTo(map)
-              .bindPopup("<b>Robert's current location</b>");
+              .bindPopup("<b>Roberts nåværende posisjon</b>");
 
             if (!cancelled) {
               setHasLive(true);
@@ -229,7 +229,7 @@ export default function LiveMap() {
     <section id="kart">
       <h2 className="section-title">
         <span className="t-mark" aria-hidden="true" />
-        Map
+        Kart
       </h2>
       <div className="map-frame">
         <div ref={containerRef} className="leaflet-map" />
@@ -237,22 +237,22 @@ export default function LiveMap() {
       <div className="map-legend">
         <span className="legend-item">
           <span className="legend-line" style={{ background: "#1a6fc4" }} />
-          Summer route (planned)
+          Sommerrute (planlagt)
         </span>
         <span className="legend-item">
           <span className="legend-line" style={{ background: "#1a6fc4", opacity: 0.5, backgroundImage: "repeating-linear-gradient(90deg,#1a6fc4 0,#1a6fc4 10px,transparent 10px,transparent 18px)" }} />
-          Winter route (completed on skis, March 2026)
+          Vinterrute (fullført på ski, mars 2026)
         </span>
         <span className="legend-item">
           <span className="legend-line" style={{ background: "#e8005a" }} />
-          Tracked route (Garmin inReach)
+          Sporet rute (Garmin inReach)
         </span>
         <span className="legend-item">
           <span className="legend-hut" />
-          Overnight stop (click for info)
+          Overnattingsstopp (klikk for info)
         </span>
         {!hasRoute && !hasLive && (
-          <span className="legend-note">Map shows Southern Norway. Route and live track will appear when the hike begins.</span>
+          <span className="legend-note">Kartet viser Sør-Norge. Rute og live-spor vises når turen starter.</span>
         )}
       </div>
     </section>

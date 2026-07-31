@@ -53,19 +53,19 @@ export default function PreviousTripsPage() {
             <span className="nav-logo-text">{config.title}</span>
           </a>
           <a href="#" className="prev-trips-back" onClick={() => window.location.hash = ""}>
-            ← Back
+            ← Tilbake
           </a>
         </div>
       </nav>
 
       <main className="content prev-trips-page">
         <div className="container">
-          <h1 className="prev-trips-title">Previous trips</h1>
+          <h1 className="prev-trips-title">Tidligere turer</h1>
 
-          {loading && <p className="muted">Loading photos…</p>}
+          {loading && <p className="muted">Laster bilder…</p>}
 
           {!loading && photos.length === 0 && (
-            <p className="muted">No photos yet.</p>
+            <p className="muted">Ingen bilder ennå.</p>
           )}
 
           {photos.length > 0 && (

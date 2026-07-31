@@ -26,18 +26,18 @@ export default function PostsFeed() {
     <section id="dagbok">
       <h2 className="section-title">
         <span className="t-mark" aria-hidden="true" />
-        Diary
+        Dagbok
       </h2>
 
       {status === "mangler-nøkler" && (
-        <p className="muted">Connect Supabase in .env to show the diary.</p>
+        <p className="muted">Koble til Supabase i .env for å vise dagboken.</p>
       )}
-      {status === "laster" && <p className="muted">Loading entries…</p>}
+      {status === "laster" && <p className="muted">Laster innlegg…</p>}
       {status === "feil" && (
-        <p className="muted">Could not load entries. Try again later.</p>
+        <p className="muted">Kunne ikke laste innlegg. Prøv igjen senere.</p>
       )}
       {status === "klar" && posts.length === 0 && (
-        <p className="muted">No entries yet. The hike hasn't started.</p>
+        <p className="muted">Ingen innlegg ennå. Turen har ikke startet.</p>
       )}
 
       <div className="posts">
@@ -77,7 +77,7 @@ export default function PostsFeed() {
               <div className="post-body">
                 <div className="post-meta">
                   {post.day_number != null && (
-                    <span className="day-badge">Day {post.day_number}</span>
+                    <span className="day-badge">Dag {post.day_number}</span>
                   )}
                   <time>{formatDate(post.created_at)}</time>
                 </div>
@@ -130,7 +130,7 @@ function renderBody(text) {
 
 function formatDate(iso) {
   try {
-    return new Date(iso).toLocaleDateString("en-GB", {
+    return new Date(iso).toLocaleDateString("nb-NO", {
       day: "numeric",
       month: "long",
     });

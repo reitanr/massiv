@@ -28,12 +28,12 @@ export default function App() {
             <span className="nav-logo-text">{config.title}</span>
           </a>
           <ul className="nav-links">
-            <li><a href="#dagbok">Diary</a></li>
-            <li><a href="#galleri">Gallery</a></li>
-            <li><a href="#kart">Map</a></li>
-            <li><a href="#stages">Stages</a></li>
-            <li><a href="#forberedelser">About</a></li>
-            <li><a href="#tidligere-turer">Photos</a></li>
+            <li><a href="#dagbok">Dagbok</a></li>
+            <li><a href="#galleri">Galleri</a></li>
+            <li><a href="#kart">Kart</a></li>
+            <li><a href="#stages">Etapper</a></li>
+            <li><a href="#forberedelser">Om turen</a></li>
+            <li><a href="#tidligere-turer">Bilder</a></li>
           </ul>
         </div>
       </nav>
@@ -48,7 +48,7 @@ export default function App() {
           <h1>{config.title}</h1>
           <p className="hero-sub">{config.subtitle}</p>
           <p className="hero-scroll">
-            <span>↓</span> Follow the journey live
+            <span>↓</span> Følg turen live
           </p>
         </div>
 
@@ -81,7 +81,7 @@ export default function App() {
       <footer className="site-footer">
         <div className="site-footer-inner">
           <span className="t-mark on-dark" aria-hidden="true" />
-          <p>{config.walker} · {config.startDato} · Tracked live via Garmin inReach</p>
+          <p>{config.walker} · {config.startDato} · Sporet live via Garmin inReach</p>
         </div>
       </footer>
     </>
@@ -203,9 +203,9 @@ function RegionCards() {
           <div className="rc-accent" style={{ background: color }} />
           <div className="rc-body">
             <div className="rc-name" style={{ color }}>{region}</div>
-            <div className="rc-row"><span className="rc-lbl">Stages</span><span className="rc-val">{days}</span></div>
-            <div className="rc-row"><span className="rc-lbl">Distance</span><span className="rc-val">{km} km</span></div>
-            <div className="rc-row"><span className="rc-lbl">Ascent</span><span className="rc-val">{ascent.toLocaleString()} m</span></div>
+            <div className="rc-row"><span className="rc-lbl">Etapper</span><span className="rc-val">{days}</span></div>
+            <div className="rc-row"><span className="rc-lbl">Distanse</span><span className="rc-val">{km} km</span></div>
+            <div className="rc-row"><span className="rc-lbl">Stigning</span><span className="rc-val">{ascent.toLocaleString()} m</span></div>
           </div>
         </div>
       ))}
@@ -232,7 +232,7 @@ function ElevationChart() {
           </div>
         ))}
       </div>
-      <p className="elev-chart-note">Ascent per day — colours show region. Day 2 is the hardest with {max.toLocaleString()} m.</p>
+      <p className="elev-chart-note">Stigning per dag — farger viser region. Dag 2 er tøffest med {max.toLocaleString()} m.</p>
     </div>
   );
 }
@@ -295,20 +295,20 @@ function Stages() {
     <section id="stages">
       <h2 className="section-title">
         <span className="t-mark" aria-hidden="true" />
-        Stages
+        Etapper
       </h2>
       <div className="stages-wrap">
         <RegionCards />
         <table className="stages-table">
           <thead>
             <tr>
-              <th>Day</th>
-              <th>Route</th>
+              <th>Dag</th>
+              <th>Rute</th>
               <th>Region</th>
               <th>km</th>
-              <th>Ascent</th>
-              <th>Difficulty</th>
-              <th>Weather</th>
+              <th>Stigning</th>
+              <th>Vanskelighet</th>
+              <th>Vær</th>
             </tr>
           </thead>
           <tbody>
@@ -353,7 +353,7 @@ function Stages() {
           </tbody>
         </table>
         <ElevationChart />
-        <p className="stages-note">Ascent figures are GPS-verified from Garmin Fenix data (florus.no/massiv). Days 8–9 and 14–15 are approximated from adjacent sections on similar terrain. Total: ~15,350 m.</p>
+        <p className="stages-note">Stigningsdata er GPS-verifisert fra Garmin Fenix (florus.no/massiv). Dag 8–9 og 14–15 er estimert fra tilstøtende seksjoner på lignende terreng. Totalt: ~15 350 m.</p>
       </div>
     </section>
   );
@@ -364,193 +364,192 @@ function Preparations() {
     <section id="forberedelser">
       <h2 className="section-title">
         <span className="t-mark" aria-hidden="true" />
-        About
+        Om turen
       </h2>
       <div className="prep-content">
-        <h3>About the route</h3>
+        <h3>Om ruten</h3>
         <p>
-          Massiv is DNT's longest continuous hiking trail — 341 kilometres from
-          Sota Sæter in Breheimen to Haukeliseter on Hardangervidda. The route
-          crosses four of Norway's most spectacular mountain regions: Breheimen,
-          Jotunheimen, Skarvheimen and Hardangervidda. Total elevation gain
-          exceeds 15,000 metres, with the highest point at Fannaråken (2,068 m).
+          Massiv er DNTs lengste sammenhengende fjellrute — 341 kilometer fra
+          Sota Sæter i Breheimen til Haukeliseter på Hardangervidda. Ruten
+          krysser fire av Norges mest spektakulære fjellregioner: Breheimen,
+          Jotunheimen, Skarvheimen og Hardangervidda. Total høydeøkning
+          overstiger 15 000 meter, med høyeste punkt på Fannaråken (2 068 m).
         </p>
         <p>
-          The Hardangervidda section — 122.8 km across the largest mountain plateau
-          in Northern Europe — was completed on skis in winter conditions between
-          21 and 25 March 2026, with DNT's approval counting it toward the full
-          Massiv stamp collection. This summer, the remaining 12 stages from
-          Sota Sæter to Finsehytta will complete the route, with all nights
-          at DNT mountain huts and a light pack.
+          Hardangervidda-delen — 122,8 km over det største fjellplatået i
+          Nord-Europa — ble fullført på ski i vintervær mellom 21. og 25. mars
+          2026, med DNTs godkjenning som en del av den fullstendige
+          Massiv-stempelsamlingen. Denne sommeren gjenstår de 12 etappene fra
+          Sota Sæter til Finsehytta, med overnatting på DNT-hytter og lett sekk.
         </p>
 
         <div className="prep-stats-split">
           <div className="prep-stats-group">
             <div className="prep-stats-group-title">
-              Summer 2026 <span className="prep-tag prep-tag-upcoming">Upcoming</span>
+              Sommer 2026 <span className="prep-tag prep-tag-upcoming">Kommer</span>
             </div>
             <div className="prep-stats">
-              <div><span className="stat-label">Distance</span><span className="stat-value"><CountUp target={246} suffix=" km" /></span></div>
-              <div><span className="stat-label">Duration</span><span className="stat-value"><CountUp target={12} suffix=" days" /></span></div>
-              <div><span className="stat-label">Elevation gain</span><span className="stat-value"><CountUp target={11253} prefix="~" suffix=" m" /></span></div>
-              <div><span className="stat-label">Highest point</span><span className="stat-value">Fannaråken 2,068 m</span></div>
-              <div><span className="stat-label">Start</span><span className="stat-value">2 August 2026</span></div>
-              <div><span className="stat-label">Accommodation</span><span className="stat-value">DNT huts</span></div>
+              <div><span className="stat-label">Distanse</span><span className="stat-value"><CountUp target={246} suffix=" km" /></span></div>
+              <div><span className="stat-label">Varighet</span><span className="stat-value"><CountUp target={12} suffix=" dager" /></span></div>
+              <div><span className="stat-label">Høydeøkning</span><span className="stat-value"><CountUp target={11253} prefix="~" suffix=" m" /></span></div>
+              <div><span className="stat-label">Høyeste punkt</span><span className="stat-value">Fannaråken 2 068 m</span></div>
+              <div><span className="stat-label">Start</span><span className="stat-value">2. august 2026</span></div>
+              <div><span className="stat-label">Overnatting</span><span className="stat-value">DNT-hytter</span></div>
             </div>
           </div>
           <div className="prep-stats-group">
             <div className="prep-stats-group-title">
-              Winter 2026 <span className="prep-tag prep-tag-done">Completed ✓</span>
+              Vinter 2026 <span className="prep-tag prep-tag-done">Fullført ✓</span>
             </div>
             <div className="prep-stats">
-              <div><span className="stat-label">Distance</span><span className="stat-value">122.8 km</span></div>
-              <div><span className="stat-label">Duration</span><span className="stat-value">6 days</span></div>
-              <div><span className="stat-label">Elevation gain</span><span className="stat-value">~4,100 m</span></div>
-              <div><span className="stat-label">Dates</span><span className="stat-value">21–25 March 2026</span></div>
-              <div><span className="stat-label">Style</span><span className="stat-value">Ski touring</span></div>
-              <div><span className="stat-label">Accommodation</span><span className="stat-value">DNT huts</span></div>
+              <div><span className="stat-label">Distanse</span><span className="stat-value">122,8 km</span></div>
+              <div><span className="stat-label">Varighet</span><span className="stat-value">6 dager</span></div>
+              <div><span className="stat-label">Høydeøkning</span><span className="stat-value">~4 100 m</span></div>
+              <div><span className="stat-label">Datoer</span><span className="stat-value">21–25. mars 2026</span></div>
+              <div><span className="stat-label">Type</span><span className="stat-value">Langrenn</span></div>
+              <div><span className="stat-label">Overnatting</span><span className="stat-value">DNT-hytter</span></div>
             </div>
           </div>
         </div>
 
-        <h3>Gear</h3>
+        <h3>Utstyr</h3>
         <img src="/gear.jpg" alt="All gear laid out before the hike" className="gear-photo" />
         <div className="gear-grid">
           <div className="gear-category">
-            <div className="gear-cat-title">Bag</div>
+            <div className="gear-cat-title">Sekk</div>
             <ul>
               <li>Osprey Talon 44</li>
             </ul>
           </div>
           <div className="gear-category">
-            <div className="gear-cat-title">Sleep / Shelter</div>
+            <div className="gear-cat-title">Sove / Ly</div>
             <ul>
-              <li>Jerven bag (emergency shelter)</li>
-              <li>Silk liner</li>
+              <li>Jerven-pose (nødly)</li>
+              <li>Silkelaken</li>
             </ul>
           </div>
           <div className="gear-category">
-            <div className="gear-cat-title">Clothing</div>
+            <div className="gear-cat-title">Klær</div>
             <ul>
-              <li>Spare t-shirt</li>
-              <li>Long-sleeve merino shirt</li>
-              <li>Thick wool sweater</li>
-              <li>Wool neck gaiter</li>
-              <li>Spare underwear</li>
-              <li>Wool base layer pants</li>
-              <li>Spare shorts</li>
-              <li>Hiking pants</li>
-              <li>Wind jacket</li>
-              <li>Main jacket (rain/wind shell)</li>
-              <li>Puffy jacket</li>
-              <li>Rain pants</li>
-              <li>Wool hat</li>
-              <li>Two-layer gloves</li>
-              <li>Spare wool socks</li>
+              <li>Reserve t-skjorte</li>
+              <li>Langermet merinotrøye</li>
+              <li>Tykk ullgenser</li>
+              <li>Ull-halsedisse</li>
+              <li>Reserve undertøy</li>
+              <li>Ull baselayer-bukse</li>
+              <li>Reserve shorts</li>
+              <li>Turbuks</li>
+              <li>Vindjakke</li>
+              <li>Regnjakke</li>
+              <li>Dunjakke</li>
+              <li>Regnbukse</li>
+              <li>Ullhue</li>
+              <li>To-lags hansker</li>
+              <li>Reserve ullsokker</li>
             </ul>
           </div>
           <div className="gear-category">
-            <div className="gear-cat-title">Footwear</div>
+            <div className="gear-cat-title">Fottøy</div>
             <ul>
-              <li>Spare trail shoes (Salomon)</li>
+              <li>Reserve tursko (Salomon)</li>
             </ul>
           </div>
           <div className="gear-category">
-            <div className="gear-cat-title">Kitchen</div>
+            <div className="gear-cat-title">Kjøkken</div>
             <ul>
-              <li>Pocket knife</li>
+              <li>Lommekniv</li>
             </ul>
           </div>
           <div className="gear-category">
-            <div className="gear-cat-title">Food (emergency rations)</div>
+            <div className="gear-cat-title">Mat (nødrasjoner)</div>
             <ul>
-              <li>Flatbread (lefser)</li>
-              <li>Chocolate</li>
-              <li>Tube cheese</li>
-              <li>Crispbread</li>
+              <li>Lefser</li>
+              <li>Sjokolade</li>
+              <li>Tubeost</li>
+              <li>Knekkebrød</li>
             </ul>
           </div>
           <div className="gear-category">
-            <div className="gear-cat-title">Navigation</div>
+            <div className="gear-cat-title">Navigasjon</div>
             <ul>
-              <li>DNT key</li>
-              <li>Massiv card</li>
+              <li>DNT-nøkkel</li>
+              <li>Massiv-kort</li>
             </ul>
           </div>
           <div className="gear-category">
-            <div className="gear-cat-title">Electronics</div>
+            <div className="gear-cat-title">Elektronikk</div>
             <ul>
-              <li>Power bank</li>
-              <li>Charging cables</li>
-              <li>Earphones</li>
-              <li>Headlamp</li>
+              <li>Powerbank</li>
+              <li>Ladekabler</li>
+              <li>Ørepropper</li>
+              <li>Hodelykt</li>
               <li>Garmin inReach</li>
             </ul>
           </div>
           <div className="gear-category">
-            <div className="gear-cat-title">Safety / First Aid</div>
+            <div className="gear-cat-title">Sikkerhet / Førstehjelp</div>
             <ul>
-              <li>First aid kit</li>
-              <li>Wound ointment</li>
-              <li>Sports tape</li>
+              <li>Førstehjelpsutstyr</li>
+              <li>Sårsmør</li>
+              <li>Sportstape</li>
               <li>Paracetamol</li>
-              <li>Individual dressing (trauma pack)</li>
-              <li>Sleep aid kit</li>
+              <li>Individuell bandasje (traumapakke)</li>
+              <li>Søvnhjelpsmidler</li>
             </ul>
           </div>
           <div className="gear-category">
-            <div className="gear-cat-title">Sun &amp; Insect Protection</div>
+            <div className="gear-cat-title">Sol og insektbeskyttelse</div>
             <ul>
-              <li>Sunscreen</li>
-              <li>Insect repellent</li>
-              <li>Head net</li>
+              <li>Solkrem</li>
+              <li>Insektmiddel</li>
+              <li>Hodenett</li>
             </ul>
           </div>
           <div className="gear-category">
             <div className="gear-cat-title">Hygiene</div>
             <ul>
-              <li>Towel</li>
-              <li>Toiletry bag (toothbrush, toothpaste)</li>
-              <li>Wet wipes</li>
-              <li>Toilet paper</li>
-              <li>Liquid soap</li>
-              <li>Nail scissors</li>
+              <li>Håndkle</li>
+              <li>Toalettmappe (tannbørste, tannkrem)</li>
+              <li>Våtservietter</li>
+              <li>Toalettpapir</li>
+              <li>Flytende såpe</li>
+              <li>Neglsaks</li>
               <li>Deodorant</li>
             </ul>
           </div>
           <div className="gear-category">
-            <div className="gear-cat-title">Hydration</div>
+            <div className="gear-cat-title">Hydrering</div>
             <ul>
-              <li>Water bottle (empty)</li>
-              <li>Cup</li>
+              <li>Vannflaske (tom)</li>
+              <li>Kopp</li>
             </ul>
           </div>
           <div className="gear-category">
-            <div className="gear-cat-title">Miscellaneous</div>
+            <div className="gear-cat-title">Diverse</div>
             <ul>
-              <li>Payment card</li>
+              <li>Betalingskort</li>
             </ul>
           </div>
         </div>
-        <h3>Planning</h3>
+        <h3>Planlegging</h3>
         <p>
-          The journey starts in Oslo on 1–2 August. On Sunday morning I take the train
-          from Oslo to Otta, then a bus onward to Bismo, and finally a pre-booked
-          taxi/minibus from Bismo up to Sota Sæter in the afternoon — the official
-          starting point of the route.
+          Reisen starter i Oslo 1.–2. august. Søndag morgen tar jeg toget fra Oslo
+          til Otta, deretter buss videre til Bismo, og til slutt en forhåndsbestilt
+          taxi/minibuss fra Bismo opp til Sota Sæter på ettermiddagen — det offisielle
+          startpunktet for ruten.
         </p>
         <p>
-          Along the way I have booked two nights at staffed huts: Sognefjellshytta (day 2)
-          and Fannaråkhytta (day 3). I have also hired a glacier guide for the crossing
-          of Fannarådbrean on the approach to Fannaråkhytta.
+          Underveis har jeg bestilt to netter på betjente hytter: Sognefjellshytta (dag 2)
+          og Fannaråkhytta (dag 3). Jeg har også leid brevandringsfører for kryssingen
+          av Fannarådbrean på vei til Fannaråkhytta.
         </p>
         <p>
-          Beyond the two pre-booked nights, accommodation is unplanned. I will be
-          travelling light with no tent, staying at DNT mountain huts every night.
+          Utover de to forhåndsbestilte nettene er overnattingen ikke planlagt. Jeg
+          reiser lett uten telt og overnatter på DNT-hytter hver natt.
         </p>
         <p>
-          For the return, the plan is to catch a bus from Haukeliseter to Oslo once I
-          arrive at the finish, and drive home from there.
+          For hjemreisen er planen å ta buss fra Haukeliseter til Oslo når jeg
+          ankommer målstreken, og kjøre hjem derfra.
         </p>
       </div>
     </section>

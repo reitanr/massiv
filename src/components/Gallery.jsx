@@ -27,10 +27,10 @@ export default function Gallery() {
         Gallery
       </h2>
 
-      {status === "laster" && <p className="muted">Loading photos…</p>}
+      {status === "laster" && <p className="muted">Laster bilder…</p>}
       {status === "klar" && images.length === 0 && (
         <p className="gallery-empty">
-          Photos from the trail will appear here as diary entries are posted.
+          Bilder fra turen vises her etter hvert som dagbokinnlegg legges ut.
         </p>
       )}
 

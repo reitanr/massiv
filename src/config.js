@@ -6,7 +6,7 @@
 export const config = {
   // Tittel og undertittel øverst på siden
   title: "Massiv",
-  subtitle: "DNT's longest trail — 18 days across Southern Norway",
+  subtitle: "DNTs lengste tur — 18 dager gjennom Sør-Norge",
 
   // Hvem som går
   walker: "Robert Reitan",
@@ -17,7 +17,7 @@ export const config = {
   mapShareName: "6HFRJ",
 
   // Omtrentlig start, vises som intro. Juster fritt.
-  startDato: "Summer 2026",
+  startDato: "Sommer 2026",
 
   // Når turen faktisk starter (ISO-format: "YYYY-MM-DD").
   // Live Garmin-sporet vises bare fra og med denne datoen.
