@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { config } from "./config.js";
 import LiveMap from "./components/LiveMap.jsx";
 import PostsFeed from "./components/PostsFeed.jsx";
-import Guestbook from "./components/Guestbook.jsx";
 import Gallery from "./components/Gallery.jsx";
 import NewPost from "./components/NewPost.jsx";
 
@@ -34,7 +33,7 @@ export default function App() {
             <li><a href="#kart">Map</a></li>
             <li><a href="#stages">Stages</a></li>
             <li><a href="#forberedelser">About</a></li>
-            <li><a href="#gjestebok">Guestbook</a></li>
+            <li><a href="#tidligere-turer">Previous trips</a></li>
           </ul>
         </div>
       </nav>
@@ -76,7 +75,7 @@ export default function App() {
           <LiveMap />
           <Stages />
           <Preparations />
-          <Guestbook />
+          <PreviousTrips />
         </div>
       </main>
 
@@ -554,6 +553,20 @@ function Preparations() {
           For the return, the plan is to catch a bus from Haukeliseter to Oslo once I
           arrive at the finish, and drive home from there.
         </p>
+      </div>
+    </section>
+  );
+}
+
+function PreviousTrips() {
+  return (
+    <section id="tidligere-turer">
+      <h2 className="section-title">
+        <span className="t-mark" aria-hidden="true" />
+        Previous trips
+      </h2>
+      <div className="prev-trips-placeholder">
+        <p>Photos coming.</p>
       </div>
     </section>
   );
