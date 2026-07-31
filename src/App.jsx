@@ -75,7 +75,6 @@ export default function App() {
           <LiveMap />
           <Stages />
           <Preparations />
-          <PreviousTrips />
         </div>
       </main>
 
