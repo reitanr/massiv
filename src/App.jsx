@@ -7,6 +7,7 @@ import NewPost from "./components/NewPost.jsx";
 import PreviousTripsPage from "./components/PreviousTripsPage.jsx";
 import AllPostsPage from "./components/AllPostsPage.jsx";
 import GalleryPage from "./components/GalleryPage.jsx";
+import JulebordPage from "./components/JulebordPage.jsx";
 
 export default function App() {
   const [page, setPage] = useState(() => window.location.hash);
@@ -21,6 +22,7 @@ export default function App() {
   if (page === "#tidligere-turer") return <PreviousTripsPage />;
   if (page === "#alle-innlegg") return <AllPostsPage />;
   if (page === "#alle-bilder") return <GalleryPage />;
+  if (page === "#julebord") return <JulebordPage />;
 
   return (
     <>
