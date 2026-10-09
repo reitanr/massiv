@@ -12,7 +12,7 @@ const DATES = [
   ["2026-12-26", "lør 26. des"], ["2026-12-30", "ons 30. des"],
 ];
 
-export default function JulebordPage() {
+export default function JulebordPage({ standalone = false }) {
   const [signups, setSignups] = useState([]);
   const [name, setName] = useState("");
   const [dates, setDates] = useState([]);
@@ -69,7 +69,7 @@ export default function JulebordPage() {
 
   return (
     <>
-      <nav className="site-nav">
+      {!standalone && <nav className="site-nav">
         <div className="site-nav-inner">
           <a href="#" className="nav-logo" onClick={() => window.location.hash = ""}>
             <span className="t-mark lg on-dark" aria-hidden="true" />
@@ -79,7 +79,7 @@ export default function JulebordPage() {
             ← Tilbake
           </a>
         </div>
-      </nav>
+      </nav>}
 
       <main className="content prev-trips-page">
         <div className="container">
