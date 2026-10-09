@@ -47,3 +47,29 @@ create policy "alle kan skrive i gjesteboka"
     char_length(name) between 1 and 40
     and char_length(message) between 1 and 500
   );
+
+
+-- JULEBORD – påmelding ------------------------------------------
+create table if not exists julebord_signups (
+  id          bigint generated always as identity primary key,
+  created_at  timestamptz not null default now(),
+  name        text not null,
+  dates       text[] not null default '{}',
+  restaurant  text not null default ''
+);
+
+alter table julebord_signups enable row level security;
+
+-- Alle kan lese påmeldingene ...
+create policy "julebord-paameldinger er offentlig lesbare"
+  on julebord_signups for select
+  using (true);
+
+-- ... og alle kan melde seg på (men ikke endre/slette andres).
+create policy "alle kan melde seg paa julebordet"
+  on julebord_signups for insert
+  with check (
+    char_length(name) between 1 and 40
+    and array_length(dates, 1) between 1 and 10
+    and char_length(restaurant) <= 200
+  );

@@ -708,6 +708,26 @@ body {
   color: var(--ink-soft);
 }
 
+/* ── Julebord-påmelding ──────────────────────────────────── */
+.jb-form { margin-top: 24px; }
+.jb-dates { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; }
+.jb-date {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px; border: 1px solid var(--stone-line); border-radius: 4px;
+  background: #fff; font-size: 0.93rem; cursor: pointer;
+}
+.jb-date.on { background: var(--pine-mid); border-color: var(--pine-mid); color: var(--text-on-dark); }
+.jb-ok { color: var(--pine-light); font-weight: 600; }
+.jb-sub { font-size: 1.3rem; margin: 40px 0 12px; }
+.jb-tally { list-style: none; display: grid; gap: 6px; }
+.jb-tally li {
+  display: grid; grid-template-columns: 110px 32px 1fr; gap: 12px;
+  padding: 8px 12px; background: var(--stone); border-radius: 4px; font-size: 0.93rem;
+}
+.jb-tally li.top { border-left: 3px solid var(--dnt-red); }
+.jb-n { font-weight: 700; text-align: right; }
+.jb-who { color: var(--ink-soft); }
+
 /* ── Ny post (mobilside) ─────────────────────────────────── */
 .np-wrap {
   min-height: 100vh;
