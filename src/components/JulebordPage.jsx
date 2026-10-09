@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { config } from "../config.js";
 import { supabase, supabaseReady } from "../lib/supabase.js";
 
-// Julebord-påmelding: alle kan krysse av datoer og foreslå sted.
+// Julebord-undersøkelse: alle kan krysse av datoer og foreslå sted.
 // Skriving styres av RLS-regelen for julebord_signups i supabase-schema.sql.
 const DATES = [
   ["2026-11-27", "fre 27. nov"], ["2026-11-28", "lør 28. nov"],
@@ -53,7 +53,7 @@ export default function JulebordPage() {
       .insert({ name: name.trim(), dates, restaurant: restaurant.trim() });
     setSending(false);
     if (error) {
-      setError("Kunne ikke sende påmeldingen. Prøv igjen.");
+      setError("Kunne ikke sende svaret. Prøv igjen.");
       return;
     }
     setName("");
@@ -85,11 +85,10 @@ export default function JulebordPage() {
         <div className="container">
           <h1 className="prev-trips-title">Julebord 2026</h1>
           <p className="muted">
-            Kristiansand, 10–15 stk. Kryss av alle datoene som passer, og skriv gjerne
-            hvor du vil dra.
+            Kryss av alle datoene som passer, og skriv gjerne hvor du vil dra.
           </p>
 
-          {!supabaseReady && <p className="muted">Påmeldingen er ikke satt opp ennå.</p>}
+          {!supabaseReady && <p className="muted">Undersøkelsen er ikke satt opp ennå.</p>}
 
           {supabaseReady && (
             <>
@@ -114,21 +113,21 @@ export default function JulebordPage() {
                   ))}
                 </div>
                 <textarea
-                  placeholder="Ønske om restaurant eller sted (valgfritt)"
+                  placeholder="Ønske om restaurant eller sted"
                   value={restaurant}
                   maxLength={200}
                   rows={2}
                   onChange={(e) => setRestaurant(e.target.value)}
                 />
                 {error && <p className="gb-error">{error}</p>}
-                {sent && !error && <p className="jb-ok">Takk, du er påmeldt!</p>}
+                {sent && !error && <p className="jb-ok">Takk for svaret!</p>}
                 <button onClick={submit} disabled={sending}>
-                  {sending ? "Sender…" : "Meld meg på"}
+                  {sending ? "Sender…" : "Send svar"}
                 </button>
               </div>
 
               <h2 className="jb-sub">Hvem kan når</h2>
-              {signups.length === 0 && <p className="muted">Ingen har meldt seg på ennå.</p>}
+              {signups.length === 0 && <p className="muted">Ingen har svart ennå.</p>}
               {signups.length > 0 && (
                 <ul className="jb-tally">
                   {DATES.map(([iso, label], i) => (
