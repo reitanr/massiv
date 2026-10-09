@@ -18,6 +18,8 @@ export default function App() {
     return () => window.removeEventListener("hashchange", handler);
   }, []);
 
+  // julebord.robertreitan.no viser bare julebord-undersøkelsen.
+  if (window.location.hostname.startsWith("julebord.")) return <JulebordPage standalone />;
   if (page === "#ny-post") return <NewPost />;
   if (page === "#tidligere-turer") return <PreviousTripsPage />;
   if (page === "#alle-innlegg") return <AllPostsPage />;
